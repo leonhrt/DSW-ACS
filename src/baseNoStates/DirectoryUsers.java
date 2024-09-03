@@ -16,7 +16,7 @@ public final class DirectoryUsers {
     users.add(new User("Blai", "77532"));
 
     // employees :
-    // Sep. 1 2023 to Mar. 1 2024
+    // Sep. 1 this year to Mar. 1 next year
     // week days 9-17h
     // just shortly unlock
     // ground floor, floor1, exterior, stairs (this, for all), that is, everywhere but the parking
@@ -24,7 +24,7 @@ public final class DirectoryUsers {
     users.add(new User("Eulalia", "43295"));
 
     // managers :
-    // Sep. 1 2023 to Mar. 1 2024
+    // Sep. 1 this year to Mar. 1 next year
     // week days + saturday, 8-20h
     // all actions
     // all spaces
@@ -32,7 +32,7 @@ public final class DirectoryUsers {
     users.add(new User("Marta", "05827"));
 
     // admin :
-    // always=2023 to 2100
+    // always=Jan. 1 this year to 2100
     // all days of the week
     // all actions
     // all spaces
