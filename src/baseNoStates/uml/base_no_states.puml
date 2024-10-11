@@ -53,9 +53,52 @@ class Door {
 '+ isClosed() :boolean
 '+ setClosed(b : boolean)
 '+ getStateName() : String
-- doAction(action : String)
+- doAction(a ction : String)
 }
 
+package "doorstates" {
+abstract class DoorState{
+# door: Door
+#name : String
++DoorState(door : door)
++open()
++close()
++lock()
++unlock()
+}
+
+class Locked extends DoorState{
++DoorState(door : Door)
++open()
++close()
++lock()
++unlock()
+}
+
+class Unlocked extends DoorState{
++DoorState(door : Door)
++open()
++close()
++lock()
++unlock()
+}
+
+class States{
++LOCKED : String
++UNLOCKED : String
+}
+
+class Actions{
++LOCK : String
++UNLOCK : String
++OPEN : String
++ CLOSE : String
+}
+
+}
+
+
+Door --> " 1" DoorState : state
 
 class User {
 - name : String
