@@ -3,14 +3,16 @@ package baseNoStates;
 import baseNoStates.requests.RequestReader;
 import org.json.JSONObject;
 
-
 public class Door {
   private final String id;
   private boolean closed; // physically
+  private boolean locked;
+  private DoorState state;
 
   public Door(String id) {
     this.id = id;
     closed = true;
+    this.state = new UnlockedState();
   }
 
   public void processRequest(RequestReader request) {
@@ -28,25 +30,17 @@ public class Door {
   private void doAction(String action) {
     switch (action) {
       case Actions.OPEN:
-        if (closed) {
-          closed = false;
-        } else {
-          System.out.println("Can't open door " + id + " because it's already open");
-        }
+        state.open(this);
         break;
       case Actions.CLOSE:
-        if (closed) {
-          System.out.println("Can't close door " + id + " because it's already closed");
-        } else {
-          closed = true;
-        }
+        state.close(this);
         break;
       case Actions.LOCK:
-        // TODO
-        // fall through
+        state.lock(this);
+        break;
       case Actions.UNLOCK:
-        // TODO
-        // fall through
+        state.unlock(this);
+        break;
       case Actions.UNLOCK_SHORTLY:
         // TODO
         System.out.println("Action " + action + " not implemented yet");
@@ -57,8 +51,22 @@ public class Door {
     }
   }
 
+  public void setState(DoorState state) {
+    this.state = state;
+  }
+
   public boolean isClosed() {
     return closed;
+  }
+
+  public boolean isLocked() { return locked; }
+
+  public void setClosed(boolean closed) {
+    this.closed = closed;
+  }
+
+  public void setLocked(boolean locked) {
+    this.locked = locked;
   }
 
   public String getId() {
@@ -74,6 +82,7 @@ public class Door {
     return "Door{"
         + ", id='" + id + '\''
         + ", closed=" + closed
+        + ", locked=" + locked
         + ", state=" + getStateName()
         + "}";
   }
@@ -83,6 +92,7 @@ public class Door {
     json.put("id", id);
     json.put("state", getStateName());
     json.put("closed", closed);
+    json.put("locked", locked);
     return json;
   }
 }
