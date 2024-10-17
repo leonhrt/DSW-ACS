@@ -12,6 +12,7 @@ public class Door {
   public Door(String id) {
     this.id = id;
     closed = true;
+    locked = false;
     this.state = new UnlockedState();
   }
 
@@ -74,7 +75,7 @@ public class Door {
   }
 
   public String getStateName() {
-    return "unlocked";
+    return state.getStateName();
   }
 
   @Override
