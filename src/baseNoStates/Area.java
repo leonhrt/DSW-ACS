@@ -15,7 +15,7 @@ public abstract class Area {
     return DirectoryAreas.findAreaById(id);
   }
 
-  public String getId(){
+  public String getId() {
     return id;
   }
 

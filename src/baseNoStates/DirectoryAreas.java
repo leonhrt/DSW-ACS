@@ -50,8 +50,8 @@ public class DirectoryAreas {
   }
 
   //add the Door if it isn't on the current allDoors list
-  public static void addDoor(Door door){
-    if(!allDoors.contains(door)){
+  public static void addDoor(Door door) {
+    if (!allDoors.contains(door)) {
       allDoors.add(door);
     }
   }

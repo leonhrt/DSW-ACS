@@ -1,6 +1,6 @@
 package baseNoStates;
 
-public class LockedState implements DoorState{
+public class LockedState implements DoorState {
   @Override
   public void open(Door door) {
     System.out.println("Can't open the door, it's locked");
@@ -25,7 +25,7 @@ public class LockedState implements DoorState{
   }
 
   @Override
-  public String getStateName(){
+  public String getStateName() {
     return "locked";
   }
 }
