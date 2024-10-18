@@ -122,10 +122,12 @@ class Actions{
 class DirectoryAreas{
 -rootArea : Area
 -allDoors : Door[]
+-allAreas : Area[]
 +makeAreas()
 +findAreaById(id : String) : Area
 +findDoorById(id : String) : Door
 +getAllDoors() : Door[]
++addDoor(door : Door)
 }
 
 
@@ -134,10 +136,10 @@ class DirectoryAreas{
 class User {
 - name : String
 - credential : String
+-spaces : Space[]
 + User(name: String, credential: String)
 + toString() : String
 + canBeInSpace(sp : Space) : boolean
-- getSpaces() : Space[]
 }
 
 abstract Class Area{
