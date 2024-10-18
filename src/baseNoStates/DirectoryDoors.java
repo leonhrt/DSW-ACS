@@ -8,21 +8,21 @@ public final class DirectoryDoors {
 
   public static void makeDoors() {
     //getting the spaces
-    Area exterior = DirectoryAreas.findAreaById("exterior");
-    Area parking = DirectoryAreas.findAreaById("parking");
-    Area stairs = DirectoryAreas.findAreaById("stairs");
-    Area hall = DirectoryAreas.findAreaById("hall");
-    Area room1 = DirectoryAreas.findAreaById("room1");
-    Area room2 = DirectoryAreas.findAreaById("room2");
-    Area corridor = DirectoryAreas.findAreaById("corridor");
-    Area room3 = DirectoryAreas.findAreaById("room3");
-    Area it = DirectoryAreas.findAreaById("it");
+    Space exterior = (Space) DirectoryAreas.findAreaById("exterior");
+    Space parking = (Space) DirectoryAreas.findAreaById("parking");
+    Space stairs = (Space) DirectoryAreas.findAreaById("stairs");
+    Space hall = (Space) DirectoryAreas.findAreaById("hall");
+    Space room1 = (Space) DirectoryAreas.findAreaById("room1");
+    Space room2 = (Space) DirectoryAreas.findAreaById("room2");
+    Space corridor = (Space) DirectoryAreas.findAreaById("corridor");
+    Space room3 = (Space) DirectoryAreas.findAreaById("room3");
+    Space it = (Space) DirectoryAreas.findAreaById("it");
 
     // basement
     Door d1 = new Door("D1", exterior, parking); // exterior, parking
     Door d2 = new Door("D2", stairs, parking); // stairs, parking
 
-    // ground floor
+    // groundno floor
     Door d3 = new Door("D3", exterior, hall); // exterior, hall
     Door d4 = new Door("D4", stairs, hall); // stairs, hall
     Door d5 = new Door("D5", hall, room1); // hall, room1

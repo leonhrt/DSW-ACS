@@ -17,8 +17,6 @@ public class DirectoryAreas {
     Partition basement = new Partition("basement", building);
     Partition groundFloor = new Partition("groundFloor", building);
     Partition floor1 = new Partition("floor1", building);
-    Partition stairs = new Partition("stairs", building);
-    Partition exterior = new Partition("exterior", building);
 
     //spaces
     Space parking = new Space("parking", basement);
@@ -28,6 +26,8 @@ public class DirectoryAreas {
     Space room3 = new Space("room3", floor1);
     Space corridor = new Space("corridor", floor1);
     Space it = new Space("it", floor1);
+    Space stairs = new Space("stairs", building);
+    Space exterior = new Space("exterior", building);
 
     allAreas = new ArrayList<>(Arrays.asList(building, basement, groundFloor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
   }

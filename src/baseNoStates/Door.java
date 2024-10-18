@@ -7,15 +7,15 @@ public class Door {
   private final String id;
   private boolean closed; // physically
   private DoorState state;
-  private final Area fromArea;
-  private final Area toArea;
+  private final Space fromSpace;
+  private final Space toSpace;
 
-  public Door(String id, Area fromArea, Area toArea) {
+  public Door(String id, Space fromSpace, Space toSpace) {
     this.id = id;
     closed = true;
     this.state = new UnlockedState();
-    this.fromArea = fromArea;
-    this.toArea = toArea;
+    this.fromSpace = fromSpace;
+    this.toSpace = toSpace;
   }
 
   public void processRequest(RequestReader request) {
@@ -91,11 +91,11 @@ public class Door {
     return json;
   }
 
-  public Area getFromArea() {
-    return fromArea;
+  public Space getFromSpace() {
+    return this.fromSpace;
   }
 
-  public Area getToArea() {
-    return toArea;
+  public Space getToSpace() {
+    return this.toSpace;
   }
 }
