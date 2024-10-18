@@ -18,11 +18,11 @@ public class User {
   }
 
   public boolean canBeInSpace(Space space) {
-    return true;
+    return spaces.contains(space);
   }
 
   private ArrayList<Space> getSpaces() {
-    return null;
+    return spaces;
   }
 
   @Override
