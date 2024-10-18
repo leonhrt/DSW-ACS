@@ -56,6 +56,15 @@ class Door {
 - doAction(a ction : String)
 }
 
+class Space extends Area{
++getSpaces() : Space[]
+}
+
+class Partition extends Area{
++getSpaces() : Space[]
+}
+
+
 package "doorstates" {
 abstract class DoorState{
 # door: Door
@@ -94,17 +103,24 @@ class Actions{
 +OPEN : String
 + CLOSE : String
 }
-
 }
 
+class DirectoryAreas{}
 
-Door --> " 1" DoorState : state
+
+
 
 class User {
 - name : String
 - credential : String
 + User(name: String, credential: String)
 + toString() : String
++ canBeInSpace(sp : Space) : boolean
+- getSpaces() : Space[]
+}
+
+abstract Class Area{
++{abstract}getSpaces() : Space[]
 }
 
 
@@ -121,4 +137,14 @@ end note
 Main -[hidden]down- Webserver
 Webserver -[hidden]down- DirectoryDoors
 DirectoryDoors -[hidden]right- DirectoryUsers
+
+
+Door --> " 1" DoorState : state
+Door -> "1" Space : fromSpace
+Door -> "1" Space : toSpace
+Space "1" *-left- "*" Door : doors
+User -> "*" Area
+Partition "1" *-- "*" Area : spaces
+DirectoryAreas -down-> "*" Area
+
 @enduml

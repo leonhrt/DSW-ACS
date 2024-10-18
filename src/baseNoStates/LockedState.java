@@ -19,7 +19,6 @@ public class LockedState implements DoorState{
   @Override
   public void unlock(Door door) {
     System.out.println("Unlocking the door");
-    door.setLocked(false);
     door.setState(new UnlockedState());
   }
 
