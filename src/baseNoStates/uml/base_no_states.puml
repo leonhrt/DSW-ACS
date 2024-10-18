@@ -45,7 +45,9 @@ DirectoryUsers --> "*" User : "users"
 class Door {
 - id : String
 - closed : boolean
-+ Door(id : String)
+- fromSpace : Space
+- toSpace : Space
++ Door(id : String, fromSpace : Space, toSpace : Space)
 + processRequest(request : RequestReader)
 + setState(doorState : DoorState)
 + toJson() : JSONObject
@@ -53,15 +55,27 @@ class Door {
 '+ isClosed() :boolean
 '+ setClosed(b : boolean)
 '+ getStateName() : String
-- doAction(a ction : String)
+- doAction(action : String)
++ getFromSpace() : Space
++ getToSpace() : Space
 }
 
 class Space extends Area{
+-doors : Door[]
++Space(id : String, parentPartition : Partition)
 +getSpaces() : Space[]
++getDoorsGivingAccess() : Door[]
++findAreaById(id : String) : Area
++addDoor(door : Door)
 }
 
 class Partition extends Area{
+-areas : Area[]
++Partition(id : String, parentPartition : Partition)
 +getSpaces() : Space[]
++getDoorsGivingAccess() : Door[]
++findAreaById(id : String) : Area
++addArea(area : Area)
 }
 
 
@@ -105,7 +119,16 @@ class Actions{
 }
 }
 
-class DirectoryAreas{}
+class DirectoryAreas{
+-rootArea : Area
+-allDoors : Door[]
+-allAreas : Area[]
++makeAreas()
++findAreaById(id : String) : Area
++findDoorById(id : String) : Door
++getAllDoors() : Door[]
++addDoor(door : Door)
+}
 
 
 
@@ -113,14 +136,19 @@ class DirectoryAreas{}
 class User {
 - name : String
 - credential : String
+-spaces : Space[]
 + User(name: String, credential: String)
 + toString() : String
 + canBeInSpace(sp : Space) : boolean
-- getSpaces() : Space[]
 }
 
 abstract Class Area{
+#id : String
+#parentPartition : Partition
++Area(id : String, parentPartition : Partition)
 +{abstract}getSpaces() : Space[]
++{abstract}getDoorsGivingAccess() : Door[]
++findAreaById(id : String) : Area
 }
 
 
@@ -145,6 +173,6 @@ Door -> "1" Space : toSpace
 Space "1" *-left- "*" Door : doors
 User -> "*" Area
 Partition "1" *-- "*" Area : spaces
-DirectoryAreas -down-> "*" Area
+DirectoryAreas -down-> "1" Area : rootArea
 
 @enduml

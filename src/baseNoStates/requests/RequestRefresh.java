@@ -2,7 +2,9 @@ package baseNoStates.requests;
 
 import baseNoStates.DirectoryDoors;
 import baseNoStates.Door;
+
 import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,9 +21,7 @@ public class RequestRefresh implements Request {
 
   @Override
   public String toString() {
-    return "RequestRefresh{"
-        + jsonsDoors
-        + "}";
+    return "RequestRefresh{" + jsonsDoors + "}";
   }
 
   // Also this is used to paint the simulator when the page is loaded, and to display

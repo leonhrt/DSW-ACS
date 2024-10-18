@@ -1,9 +1,7 @@
 package baseNoStates.requests;
 
-import baseNoStates.DirectoryDoors;
-import baseNoStates.DirectoryUsers;
-import baseNoStates.Door;
-import baseNoStates.User;
+import baseNoStates.*;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -51,16 +49,7 @@ public class RequestReader implements Request {
     if (userName == null) {
       userName = "unknown";
     }
-    return "Request{"
-            + "credential=" + credential
-            + ", userName=" + userName
-            + ", action=" + action
-            + ", now=" + now
-            + ", doorID=" + doorId
-            + ", closed=" + doorClosed
-            + ", authorized=" + authorized
-            + ", reasons=" + reasons
-            + "}";
+    return "Request{" + "credential=" + credential + ", userName=" + userName + ", action=" + action + ", now=" + now + ", doorID=" + doorId + ", closed=" + doorClosed + ", authorized=" + authorized + ", reasons=" + reasons + "}";
   }
 
   public JSONObject answerToJson() {
@@ -94,10 +83,11 @@ public class RequestReader implements Request {
     if (user == null) {
       authorized = false;
       addReason("user doesn't exists");
-    } else {
-      //TODO: get the who, where, when and what in order to decide, and if not
-      // authorized add the reason(s)
+    } else if (user.canBeInSpace(door.getFromSpace()) && user.canBeInSpace(door.getToSpace())) {
       authorized = true;
+    } else {
+      authorized = false;
+      addReason("user doesn't have access to this door");
     }
   }
 }
