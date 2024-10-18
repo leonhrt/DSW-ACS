@@ -38,6 +38,7 @@ public class DirectoryAreas {
     Optional<Area> area = allAreas.stream().filter(a -> a.getId().equals(id)).findFirst();
     return area.orElse(null);
   }
+
   public static Door findDoorById(String id){
     return null;
   }

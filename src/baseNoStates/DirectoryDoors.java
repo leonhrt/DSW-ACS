@@ -8,15 +8,15 @@ public final class DirectoryDoors {
 
   public static void makeDoors() {
     //getting the spaces
-    Space exterior = (Space) DirectoryAreas.findAreaById("exterior");
-    Space parking = (Space) DirectoryAreas.findAreaById("parking");
-    Space stairs = (Space) DirectoryAreas.findAreaById("stairs");
-    Space hall = (Space) DirectoryAreas.findAreaById("hall");
-    Space room1 = (Space) DirectoryAreas.findAreaById("room1");
-    Space room2 = (Space) DirectoryAreas.findAreaById("room2");
-    Space corridor = (Space) DirectoryAreas.findAreaById("corridor");
-    Space room3 = (Space) DirectoryAreas.findAreaById("room3");
-    Space it = (Space) DirectoryAreas.findAreaById("it");
+    Area exterior = DirectoryAreas.findAreaById("exterior");
+    Area parking = DirectoryAreas.findAreaById("parking");
+    Area stairs = DirectoryAreas.findAreaById("stairs");
+    Area hall = DirectoryAreas.findAreaById("hall");
+    Area room1 = DirectoryAreas.findAreaById("room1");
+    Area room2 = DirectoryAreas.findAreaById("room2");
+    Area corridor = DirectoryAreas.findAreaById("corridor");
+    Area room3 = DirectoryAreas.findAreaById("room3");
+    Area it = DirectoryAreas.findAreaById("it");
 
     // basement
     Door d1 = new Door("D1", exterior, parking); // exterior, parking
