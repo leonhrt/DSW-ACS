@@ -66,6 +66,7 @@ class Space extends Area{
 +getSpaces() : Space[]
 +getDoorsGivingAccess() : Door[]
 +findAreaById(id : String) : Area
++addDoor(door : Door)
 }
 
 class Partition extends Area{

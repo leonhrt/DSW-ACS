@@ -35,9 +35,14 @@ public class Partition extends Area{
     return spaces;
   }
 
+  //we look for the spaces contained in the partition, then the doors contained in each space
   @Override
   public ArrayList<Door> getDoorsGivingAccess(){
-    return null;
+    ArrayList<Door> doors = new ArrayList<>();
+    for (Space sp : getSpaces()){
+      doors.addAll(sp.getDoorsGivingAccess());
+    }
+    return doors;
   }
 
   @Override

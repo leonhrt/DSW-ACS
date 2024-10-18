@@ -33,7 +33,7 @@ public class DirectoryAreas {
   }
 
   //find an area of the allAreas ArrayList by its id
-  //we get a filtered by id stream, and we return the first, or if there isn't any, null
+  //we get a stream filtered by id, and we return the first, or if there isn't any, null
   public static Area findAreaById(String id){
     Optional<Area> area = allAreas.stream().filter(a -> a.getId().equals(id)).findFirst();
     return area.orElse(null);

@@ -16,6 +16,10 @@ public class Door {
     this.state = new UnlockedState();
     this.fromSpace = fromSpace;
     this.toSpace = toSpace;
+
+    //we add this Door to Spaces fromSpace and toSpace
+    fromSpace.addDoor(this);
+    toSpace.addDoor(this);
   }
 
   public void processRequest(RequestReader request) {

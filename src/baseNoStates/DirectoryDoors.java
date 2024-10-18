@@ -22,7 +22,7 @@ public final class DirectoryDoors {
     Door d1 = new Door("D1", exterior, parking); // exterior, parking
     Door d2 = new Door("D2", stairs, parking); // stairs, parking
 
-    // groundno floor
+    // ground floor
     Door d3 = new Door("D3", exterior, hall); // exterior, hall
     Door d4 = new Door("D4", stairs, hall); // stairs, hall
     Door d5 = new Door("D5", hall, room1); // hall, room1
