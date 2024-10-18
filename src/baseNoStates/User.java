@@ -1,5 +1,7 @@
 package baseNoStates;
 
+import java.util.ArrayList;
+
 public class User {
   private final String name;
   private final String credential;
@@ -11,6 +13,14 @@ public class User {
 
   public String getCredential() {
     return credential;
+  }
+
+  public boolean canBeInSpace(Space space) {
+    return true;
+  }
+
+  private ArrayList<Space> getSpaces(){
+    return null;
   }
 
   @Override

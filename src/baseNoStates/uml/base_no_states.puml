@@ -62,15 +62,19 @@ class Door {
 
 class Space extends Area{
 -doors : Door[]
++Space(id : String, parentPartition : Partition)
 +getSpaces() : Space[]
 +getDoorsGivingAccess() : Door[]
 +findAreaById(id : String) : Area
 }
 
 class Partition extends Area{
+-areas : Area[]
++Partition(id : String, parentPartition : Partition)
 +getSpaces() : Space[]
 +getDoorsGivingAccess() : Door[]
 +findAreaById(id : String) : Area
++addArea(area : Area)
 }
 
 
@@ -136,9 +140,12 @@ class User {
 }
 
 abstract Class Area{
+#id : String
+#parentPartition : Partition
++Area(id : String, parentPartition : Partition)
 +{abstract}getSpaces() : Space[]
 +{abstract}getDoorsGivingAccess() : Door[]
-+{abstract}findAreaById(id : String) : Area
++findAreaById(id : String) : Area
 }
 
 
