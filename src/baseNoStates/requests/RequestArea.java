@@ -19,8 +19,7 @@ public class RequestArea implements Request {
   public RequestArea(String credential, String action, LocalDateTime now, String areaId) {
     this.credential = credential;
     this.areaId = areaId;
-    assert action.equals(Actions.LOCK) || action.equals(Actions.UNLOCK)
-            : "invalid action " + action + " for an area request";
+    assert action.equals(Actions.LOCK) || action.equals(Actions.UNLOCK) : "invalid action " + action + " for an area request";
     this.action = action;
     this.now = now;
   }
@@ -51,13 +50,7 @@ public class RequestArea implements Request {
     } else {
       requestsDoorsStr = requests.toString();
     }
-    return "Request{"
-            + "credential=" + credential
-            + ", action=" + action
-            + ", now=" + now
-            + ", areaId=" + areaId
-            + ", requestsDoors=" + requestsDoorsStr
-            + "}";
+    return "Request{" + "credential=" + credential + ", action=" + action + ", now=" + now + ", areaId=" + areaId + ", requestsDoors=" + requestsDoorsStr + "}";
   }
 
   // processing the request of an area is creating the corresponding door requests and forwarding

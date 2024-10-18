@@ -19,7 +19,7 @@ public class User {
     return true;
   }
 
-  private ArrayList<Space> getSpaces(){
+  private ArrayList<Space> getSpaces() {
     return null;
   }
 

@@ -4,6 +4,7 @@ import baseNoStates.DirectoryDoors;
 import baseNoStates.DirectoryUsers;
 import baseNoStates.Door;
 import baseNoStates.User;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -51,16 +52,7 @@ public class RequestReader implements Request {
     if (userName == null) {
       userName = "unknown";
     }
-    return "Request{"
-            + "credential=" + credential
-            + ", userName=" + userName
-            + ", action=" + action
-            + ", now=" + now
-            + ", doorID=" + doorId
-            + ", closed=" + doorClosed
-            + ", authorized=" + authorized
-            + ", reasons=" + reasons
-            + "}";
+    return "Request{" + "credential=" + credential + ", userName=" + userName + ", action=" + action + ", now=" + now + ", doorID=" + doorId + ", closed=" + doorClosed + ", authorized=" + authorized + ", reasons=" + reasons + "}";
   }
 
   public JSONObject answerToJson() {

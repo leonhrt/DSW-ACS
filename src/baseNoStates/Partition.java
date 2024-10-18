@@ -8,6 +8,8 @@ public class Partition extends Area {
 
   public Partition(String id, Partition parentPartition) {
     super(id, parentPartition);
+
+    //add this partition to the parent partition's (if there's one) areas list
     if (parentPartition != null) {
       parentPartition.addArea(this);
     }
@@ -22,11 +24,11 @@ public class Partition extends Area {
     //create a Space array to store Space items
     ArrayList<Space> spaces = new ArrayList<>();
 
-    //recursivily get the Space items from the Partition and sub Partitions
+    //recursivily get the Space items from the current Partition and sub Partitions
     for (Area area : areas) {
-      if (area instanceof Space) {
+      if (area instanceof Space) {                //it's a space, add it to the list
         spaces.add((Space) area);
-      } else if (area instanceof Partition) {
+      } else if (area instanceof Partition) {     //it's a partition, retrieve its spaces
         spaces.addAll(area.getSpaces());
       }
     }

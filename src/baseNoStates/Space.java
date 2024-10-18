@@ -9,6 +9,8 @@ public class Space extends Area {
 
   public Space(String id, Partition parentPartition) {
     super(id, parentPartition);
+
+    //add this space to the parent partition's areas list
     parentPartition.addArea(this);
   }
 

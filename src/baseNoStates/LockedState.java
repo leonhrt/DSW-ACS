@@ -16,6 +16,8 @@ public class LockedState implements DoorState{
     System.out.println("The door is already locked");
   }
 
+  //as the actual state is locked, we set the door's state to
+  //unlocked with a new UnlockedState
   @Override
   public void unlock(Door door) {
     System.out.println("Unlocking the door");
