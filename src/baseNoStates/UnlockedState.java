@@ -27,7 +27,6 @@ public class UnlockedState implements DoorState{
       System.out.println("Can't lock the door because it's open");
     } else {
       System.out.println("The door is already locked");
-      door.setLocked(true);
       door.setState(new LockedState());
     }
   }

@@ -6,13 +6,11 @@ import org.json.JSONObject;
 public class Door {
   private final String id;
   private boolean closed; // physically
-  private boolean locked;
   private DoorState state;
 
   public Door(String id) {
     this.id = id;
     closed = true;
-    locked = false;
     this.state = new UnlockedState();
   }
 
@@ -60,14 +58,8 @@ public class Door {
     return closed;
   }
 
-  public boolean isLocked() { return locked; }
-
   public void setClosed(boolean closed) {
     this.closed = closed;
-  }
-
-  public void setLocked(boolean locked) {
-    this.locked = locked;
   }
 
   public String getId() {
@@ -83,7 +75,6 @@ public class Door {
     return "Door{"
         + ", id='" + id + '\''
         + ", closed=" + closed
-        + ", locked=" + locked
         + ", state=" + getStateName()
         + "}";
   }
@@ -93,7 +84,6 @@ public class Door {
     json.put("id", id);
     json.put("state", getStateName());
     json.put("closed", closed);
-    json.put("locked", locked);
     return json;
   }
 }
