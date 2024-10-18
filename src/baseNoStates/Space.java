@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Space extends Area {
 
-  private ArrayList<Door> doors = new ArrayList<>();
+  private final ArrayList<Door> doors = new ArrayList<>();
 
   public Space(String id, Partition parentPartition) {
     super(id, parentPartition);
@@ -19,7 +19,7 @@ public class Space extends Area {
   //return an ArrayList containing just this Space
   @Override
   public ArrayList<Space> getSpaces() {
-    return new ArrayList<Space>(List.of(this));
+    return new ArrayList<>(List.of(this));
   }
 
   @Override

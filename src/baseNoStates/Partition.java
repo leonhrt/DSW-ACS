@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Partition extends Area{
 
-  private ArrayList<Area> areas = new ArrayList<>();
+  private final ArrayList<Area> areas = new ArrayList<>();
 
   public Partition(String id, Partition parentPartition){
     super(id, parentPartition);
