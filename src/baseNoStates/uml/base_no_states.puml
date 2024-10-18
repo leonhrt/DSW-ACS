@@ -53,15 +53,20 @@ class Door {
 '+ isClosed() :boolean
 '+ setClosed(b : boolean)
 '+ getStateName() : String
-- doAction(a ction : String)
+- doAction(action : String)
 }
 
 class Space extends Area{
+-doors : Door[]
 +getSpaces() : Space[]
++getDoorsGivingAccess() : Door[]
++findAreaById(id : String) : Area
 }
 
 class Partition extends Area{
 +getSpaces() : Space[]
++getDoorsGivingAccess() : Door[]
++findAreaById(id : String) : Area
 }
 
 
@@ -105,7 +110,14 @@ class Actions{
 }
 }
 
-class DirectoryAreas{}
+class DirectoryAreas{
+-rootArea : Area
+-allDoors : Door[]
++makeAreas()
++findAreaById(id : String) : Area
++findDoorById(id : String) : Door
++getAllDoors() : Door[]
+}
 
 
 
@@ -121,6 +133,8 @@ class User {
 
 abstract Class Area{
 +{abstract}getSpaces() : Space[]
++{abstract}getDoorsGivingAccess() : Door[]
++{abstract}findAreaById(id : String) : Area
 }
 
 
@@ -145,6 +159,6 @@ Door -> "1" Space : toSpace
 Space "1" *-left- "*" Door : doors
 User -> "*" Area
 Partition "1" *-- "*" Area : spaces
-DirectoryAreas -down-> "*" Area
+DirectoryAreas -down-> "1" Area : rootArea
 
 @enduml
