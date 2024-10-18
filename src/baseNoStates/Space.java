@@ -27,15 +27,11 @@ public class Space extends Area {
     return doors;
   }
 
-  @Override
-  public String getId() {
-    return id;
-  }
-
-  //add the Door if it's not on the current doors list
+  //add the Door if it isn't on the current doors list
   public void addDoor(Door door) {
     if (!doors.contains(door)) {
-      this.doors.add(door);
+      doors.add(door);
+      DirectoryAreas.addDoor(door);
     }
   }
 

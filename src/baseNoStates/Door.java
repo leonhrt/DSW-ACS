@@ -80,11 +80,7 @@ public class Door {
 
   @Override
   public String toString() {
-    return "Door{"
-        + ", id='" + id + '\''
-        + ", closed=" + closed
-        + ", state=" + getStateName()
-        + "}";
+    return "Door{" + ", id='" + id + '\'' + ", closed=" + closed + ", state=" + getStateName() + "}";
   }
 
   public JSONObject toJson() {

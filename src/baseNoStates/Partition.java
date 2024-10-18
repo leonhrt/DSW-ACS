@@ -2,18 +2,18 @@ package baseNoStates;
 
 import java.util.ArrayList;
 
-public class Partition extends Area{
+public class Partition extends Area {
 
   private final ArrayList<Area> areas = new ArrayList<>();
 
-  public Partition(String id, Partition parentPartition){
+  public Partition(String id, Partition parentPartition) {
     super(id, parentPartition);
-    if(parentPartition != null){
+    if (parentPartition != null) {
       parentPartition.addArea(this);
     }
   }
 
-  public Area findAreaById(String id){
+  public Area findAreaById(String id) {
     return super.findAreaById(id);
   }
 
@@ -23,11 +23,10 @@ public class Partition extends Area{
     ArrayList<Space> spaces = new ArrayList<>();
 
     //recursivily get the Space items from the Partition and sub Partitions
-    for(Area area : areas){
-      if(area instanceof Space){
-        spaces.add((Space)area);
-      }
-      else if(area instanceof Partition){
+    for (Area area : areas) {
+      if (area instanceof Space) {
+        spaces.add((Space) area);
+      } else if (area instanceof Partition) {
         spaces.addAll(area.getSpaces());
       }
     }
@@ -37,21 +36,19 @@ public class Partition extends Area{
 
   //we look for the spaces contained in the partition, then the doors contained in each space
   @Override
-  public ArrayList<Door> getDoorsGivingAccess(){
+  public ArrayList<Door> getDoorsGivingAccess() {
     ArrayList<Door> doors = new ArrayList<>();
-    for (Space sp : getSpaces()){
+    for (Space sp : getSpaces()) {
       doors.addAll(sp.getDoorsGivingAccess());
     }
     return doors;
   }
 
-  @Override
-  public String getId() {
-    return this.id;
-  }
-
-  public void addArea(Area area){
-    areas.add(area);
+  //add the area to areas only if it isn't in it yet
+  public void addArea(Area area) {
+    if (!areas.contains(area)) {
+      areas.add(area);
+    }
   }
 
 }

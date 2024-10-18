@@ -5,13 +5,14 @@ import java.util.Arrays;
 import java.util.Optional;
 
 public class DirectoryAreas {
-  private Area rootArea;
-  private static ArrayList<Door> allDoors;
-  private static ArrayList<Area> allAreas;
+  private static Area rootArea;
+  private static ArrayList<Door> allDoors = new ArrayList<>();
+  private static ArrayList<Area> allAreas = new ArrayList<>();
 
-  public static void makeAreas(){
+  public static void makeAreas() {
     //partition of partitions
     Partition building = new Partition("building", null);
+    rootArea = building;
 
     //partitions of spaces
     Partition basement = new Partition("basement", building);
@@ -29,20 +30,29 @@ public class DirectoryAreas {
     Space stairs = new Space("stairs", building);
     Space exterior = new Space("exterior", building);
 
-    allAreas = new ArrayList<>(Arrays.asList(building, basement, groundFloor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
+    allAreas.addAll(Arrays.asList(building, basement, groundFloor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
   }
 
   //find an area of the allAreas ArrayList by its id
   //we get a stream filtered by id, and we return the first, or if there isn't any, null
-  public static Area findAreaById(String id){
+  public static Area findAreaById(String id) {
     Optional<Area> area = allAreas.stream().filter(a -> a.getId().equals(id)).findFirst();
     return area.orElse(null);
   }
 
-  public static Door findDoorById(String id){
-    return null;
+  public static Door findDoorById(String id) {
+    Optional<Door> door = allDoors.stream().filter(d -> d.getId().equals(id)).findFirst();
+    return door.orElse(null);
   }
-  public static ArrayList<Door> getAllDoors(){
+
+  public static ArrayList<Door> getAllDoors() {
     return allDoors;
+  }
+
+  //add the Door if it isn't on the current allDoors list
+  public static void addDoor(Door door){
+    if(!allDoors.contains(door)){
+      allDoors.add(door);
+    }
   }
 }
