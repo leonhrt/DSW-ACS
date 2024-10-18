@@ -7,11 +7,15 @@ public class Door {
   private final String id;
   private boolean closed; // physically
   private DoorState state;
+  private final Space fromSpace;
+  private final Space toSpace;
 
-  public Door(String id) {
+  public Door(String id, Space fromSpace, Space toSpace) {
     this.id = id;
     closed = true;
     this.state = new UnlockedState();
+    this.fromSpace = fromSpace;
+    this.toSpace = toSpace;
   }
 
   public void processRequest(RequestReader request) {
@@ -85,5 +89,13 @@ public class Door {
     json.put("state", getStateName());
     json.put("closed", closed);
     return json;
+  }
+
+  public Space getFromSpace() {
+    return fromSpace;
+  }
+
+  public Space getToSpace() {
+    return toSpace;
   }
 }

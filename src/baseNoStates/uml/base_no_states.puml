@@ -47,7 +47,7 @@ class Door {
 - closed : boolean
 - fromSpace : Space
 - toSpace : Space
-+ Door(id : String)
++ Door(id : String, fromSpace : Space, toSpace : Space)
 + processRequest(request : RequestReader)
 + setState(doorState : DoorState)
 + toJson() : JSONObject
