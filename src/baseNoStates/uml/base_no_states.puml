@@ -45,6 +45,8 @@ DirectoryUsers --> "*" User : "users"
 class Door {
 - id : String
 - closed : boolean
+- fromSpace : Space
+- toSpace : Space
 + Door(id : String)
 + processRequest(request : RequestReader)
 + setState(doorState : DoorState)
@@ -54,6 +56,8 @@ class Door {
 '+ setClosed(b : boolean)
 '+ getStateName() : String
 - doAction(action : String)
++ getFromSpace() : Space
++ getToSpace() : Space
 }
 
 class Space extends Area{
