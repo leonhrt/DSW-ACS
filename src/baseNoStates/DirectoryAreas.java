@@ -49,6 +49,10 @@ public class DirectoryAreas {
     return allDoors;
   }
 
+  public static ArrayList<Area> getAllAreas() {
+    return allAreas;
+  }
+
   //add the Door if it isn't on the current allDoors list
   public static void addDoor(Door door) {
     if (!allDoors.contains(door)) {
