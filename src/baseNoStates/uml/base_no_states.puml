@@ -32,15 +32,11 @@ class DirectoryDoors {
 + {static} getAllDoors() : Door[]
 }
 
-DirectoryDoors --> "*" Door : "allDoors"
-
 class DirectoryUsers {
 - {static} users : User[]
 + {static} makeUsers()
 + {static} findUserByCredential(credential : String) : User
 }
-
-DirectoryUsers --> "*" User : "users"
 
 class Door {
 - id : String
@@ -151,6 +147,28 @@ abstract Class Area{
 +findAreaById(id : String) : Area
 }
 
+class DirectoryUserGroups {
+- {static} userGroup: UserGroup[]
++ {static} makeUserGroups()
++ {static} findUserByCredential(credential : String) : User
+}
+
+class UserGroup {
+- name : String
+- actions : String[]
++ UserGroup(name : String, actions : String[], users : User[],
+ availableAreas : Area[], schedules : Schedule[])
+}
+
+class Schedule {
+- fromDate : LocalDate
+- toDate : LocalDate
+- fromHour : LocalTime
+- toHour : LocalTime
+- weekdays : DayOfWeek[]
++ Schedule(fromDate : LocalDate, toDate : LocalDate,
+ fromHour : LocalTime, toHour : LocalTime, weekdays : Set<DayOfWeek>)
+}
 
 class Main {
 + {static} main(args : String)
@@ -170,9 +188,15 @@ DirectoryDoors -[hidden]right- DirectoryUsers
 Door --> " 1" DoorState : state
 Door -> "1" Space : fromSpace
 Door -> "1" Space : toSpace
-Space "1" *-left- "*" Door : doors
-User -> "*" Area
+Space "1" *-- "*" Door : doors
+'User -> "*" Area
 Partition "1" *-- "*" Area : spaces
-DirectoryAreas -down-> "1" Area : rootArea
+DirectoryAreas --> "1" Area : rootArea
+'DirectoryUsers --> "*" User : "users"
+DirectoryUserGroups o--> "1..*" UserGroup : userGroups
+UserGroup *--> User : users
+DirectoryDoors --> "*" Door : "allDoors"
+UserGroup o--> Area : availableAreas
+UserGroup o--> Schedule : schedules
 
 @enduml
