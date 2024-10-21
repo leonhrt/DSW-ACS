@@ -2,10 +2,12 @@ package baseNoStates;
 
 import java.util.ArrayList;
 
+//TODO: Modify spaces to use UserGroup instead
 public class User {
   private final String name;
   private final String credential;
   private final ArrayList<Space> spaces = new ArrayList<>();
+  private final ArrayList<UserGroup> userGroups = new ArrayList<>();
 
   public User(String name, String credential, ArrayList<Space> spaces) {
     this.name = name;

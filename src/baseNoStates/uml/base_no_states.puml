@@ -184,7 +184,6 @@ Main -[hidden]down- Webserver
 Webserver -[hidden]down- DirectoryDoors
 DirectoryDoors -[hidden]right- DirectoryUsers
 
-
 Door --> " 1" DoorState : state
 Door -> "1" Space : fromSpace
 Door -> "1" Space : toSpace
@@ -194,9 +193,9 @@ Partition "1" *-- "*" Area : spaces
 DirectoryAreas --> "1" Area : rootArea
 'DirectoryUsers --> "*" User : "users"
 DirectoryUserGroups o--> "1..*" UserGroup : userGroups
-UserGroup *--> User : users
+UserGroup "1\nuserGroup" *--> "users\n*" User
 DirectoryDoors --> "*" Door : "allDoors"
-UserGroup o--> Area : availableAreas
-UserGroup o--> Schedule : schedules
+UserGroup o--> "*" Area : availableAreas
+UserGroup *--> "1..*" Schedule : schedules
 
 @enduml
