@@ -11,7 +11,7 @@ public class Space extends Area {
     super(id, parentPartition);
 
     //add this space to the parent partition's areas list
-    parentPartition.addArea(this);
+    if(parentPartition!=null) parentPartition.addArea(this);
   }
 
   public Area findAreaById(String id) {

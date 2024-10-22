@@ -1,6 +1,8 @@
 package baseNoStates;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Partition extends Area {
 
@@ -36,14 +38,34 @@ public class Partition extends Area {
     return spaces;
   }
 
-  //we look for the spaces contained in the partition, then the doors contained in each space
+  //we look for the spaces contained in the partition,
+  //then the doors contained in each space,
+  //then we keep the ones that give access from outside the area
   @Override
   public ArrayList<Door> getDoorsGivingAccess() {
+    //get all spaces of the partition
+    ArrayList<Space> spaces = getSpaces();
+    //convert to a set to be more efficient when looking for a space in the list
+    Set<Space> spaceSet = new HashSet<>(spaces);
+
+    ArrayList<Door> doors = new ArrayList<>();
+    for (Space sp : spaces) {
+      for(Door door : sp.getDoorsGivingAccess()){
+        if(!(spaceSet.contains(door.getFromSpace()) && spaceSet.contains(door.getToSpace()))){
+          doors.add(door);
+        }
+      }
+    }
+    return doors;
+
+    /*
+    //old implementation -> all doors inside the area are given, therefore all are closed, but exterior can be declared (in DirectoryAreas) as a space of building instead of null parentPartition
     ArrayList<Door> doors = new ArrayList<>();
     for (Space sp : getSpaces()) {
       doors.addAll(sp.getDoorsGivingAccess());
     }
     return doors;
+     */
   }
 
   //add the area to areas only if it isn't in it yet

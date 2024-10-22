@@ -28,7 +28,7 @@ public class DirectoryAreas {
     Space corridor = new Space("corridor", floor1);
     Space it = new Space("it", floor1);
     Space stairs = new Space("stairs", building);
-    Space exterior = new Space("exterior", building);
+    Space exterior = new Space("exterior", null);
 
     allAreas.addAll(Arrays.asList(building, basement, ground_floor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
   }
