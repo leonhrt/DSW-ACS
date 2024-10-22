@@ -16,21 +16,21 @@ public class DirectoryAreas {
 
     //partitions of spaces
     Partition basement = new Partition("basement", building);
-    Partition groundFloor = new Partition("groundFloor", building);
+    Partition ground_floor = new Partition("ground_floor", building);
     Partition floor1 = new Partition("floor1", building);
 
     //spaces
     Space parking = new Space("parking", basement);
-    Space hall = new Space("hall", groundFloor);
-    Space room1 = new Space("room1", groundFloor);
-    Space room2 = new Space("room2", groundFloor);
+    Space hall = new Space("hall", ground_floor);
+    Space room1 = new Space("room1", ground_floor);
+    Space room2 = new Space("room2", ground_floor);
     Space room3 = new Space("room3", floor1);
     Space corridor = new Space("corridor", floor1);
     Space it = new Space("it", floor1);
     Space stairs = new Space("stairs", building);
     Space exterior = new Space("exterior", building);
 
-    allAreas.addAll(Arrays.asList(building, basement, groundFloor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
+    allAreas.addAll(Arrays.asList(building, basement, ground_floor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
   }
 
   //find an area of the allAreas ArrayList by its id
