@@ -5,16 +5,17 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class Schedule {
     private LocalDate fromDate;
     private LocalDate toDate;
     private LocalTime fromHour;
     private LocalTime toHour;
-    private ArrayList<DayOfWeek> weekdays;
+    private Set<DayOfWeek> weekdays;
 
     public Schedule(LocalDate fromDate, LocalDate toDate, LocalTime fromHour, LocalTime toHour,
-                    ArrayList<DayOfWeek> weekdays) {
+                    Set<DayOfWeek> weekdays) {
         this.fromDate = fromDate;
         this.toDate = toDate;
         this.fromHour = fromHour;

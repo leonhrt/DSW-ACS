@@ -83,11 +83,11 @@ public class RequestReader implements Request {
     if (user == null) {
       authorized = false;
       addReason("user doesn't exists");
-    } else if (user.canBeInSpace(door.getFromSpace()) && user.canBeInSpace(door.getToSpace())) {
-      authorized = true;
     } else {
-      authorized = false;
-      addReason("user doesn't have access to this door");
+      authorized = user.canSendRequests(now) &&     // Who and when
+          user.canBeInSpace(door.getFromSpace()) && // Where
+          user.canBeInSpace(door.getToSpace()) &&   // Where
+          user.canDoAction(action);                 // What
     }
   }
 }

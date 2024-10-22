@@ -115,20 +115,6 @@ class Actions{
 }
 }
 
-class DirectoryAreas{
--rootArea : Area
--allDoors : Door[]
--allAreas : Area[]
-+makeAreas()
-+findAreaById(id : String) : Area
-+findDoorById(id : String) : Door
-+getAllDoors() : Door[]
-+addDoor(door : Door)
-}
-
-
-
-
 class User {
 - name : String
 - credential : String
@@ -162,6 +148,7 @@ class UserGroup {
  availableAreas : Area[], schedules : Schedule[])
 + checkAllowedDateTime(now : LocalDateTime) : boolean
 + canDoAction(action : String) : boolean
++ userCanBeInSpace(space : Space) : boolean
 }
 
 class Schedule {
@@ -169,7 +156,7 @@ class Schedule {
 - toDate : LocalDate
 - fromHour : LocalTime
 - toHour : LocalTime
-- weekdays : DayOfWeek[]
+- weekdays : Set<DayOfWeek>
 + Schedule(fromDate : LocalDate, toDate : LocalDate,
  fromHour : LocalTime, toHour : LocalTime, weekdays : Set<DayOfWeek>)
 + allowedDateTime(now : LocalDateTime) : boolean
@@ -188,13 +175,14 @@ DiretoryUsers.makeUsers()
 new Webserver()
 end note
 
-Main -[hidden]down- Webserver
-Webserver -[hidden]down- DirectoryDoors
-DirectoryDoors -[hidden]right- DirectoryUsers
+'Main -[hidden]down- Webserver
+'Webserver -[hidden]down- DirectoryDoors
+'DirectoryDoors -[hidden]right- DirectoryUsers
+DirectoryAreas -[hidden]left- DirectoryUserGroups
 
 Door --> " 1" DoorState : state
-Door -> "1" Space : fromSpace
-Door -> "1" Space : toSpace
+Door --> "1" Space : fromSpace
+Door --> "1" Space : toSpace
 Space "1" *-- "*" Door : doors
 'User -> "*" Area
 Partition "1" *-- "*" Area : spaces
@@ -205,5 +193,6 @@ UserGroup "1\nuserGroup" *--> "users\n*" User
 DirectoryDoors --> "*" Door : "allDoors"
 UserGroup o--> "*" Area : availableAreas
 UserGroup --> "1" Schedule : schedule
+DirectoryUsers o--> "*" User : users
 
 @enduml
