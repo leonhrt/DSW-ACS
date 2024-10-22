@@ -87,7 +87,7 @@ public class RequestReader implements Request {
       authorized = true;
     } else {
       authorized = false;
-      addReason("user doesn't have access to this door");
+      addReason("user doesn't have access to door " + doorId);
     }
   }
 }
