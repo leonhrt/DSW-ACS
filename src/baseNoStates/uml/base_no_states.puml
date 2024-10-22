@@ -172,6 +172,7 @@ class Schedule {
 + allowedDateTime(now : LocalDateTime) : boolean
 - checkDate(now : LocalDate) : boolean
 - checkTime(now : LocalTime) : boolean
+- checkWeekday(now : DayOfWeek) : boolean
 }
 
 class Main {
