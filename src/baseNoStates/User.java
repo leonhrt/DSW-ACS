@@ -26,7 +26,6 @@ public class User {
 
   public boolean canSendRequests(LocalDateTime now) {
     return userGroup.checkAllowedDateTime(now);
-
   }
 
   public boolean canDoAction(String action) {
