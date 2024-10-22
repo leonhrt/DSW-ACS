@@ -196,6 +196,6 @@ DirectoryUserGroups o--> "1..*" UserGroup : userGroups
 UserGroup "1\nuserGroup" *--> "users\n*" User
 DirectoryDoors --> "*" Door : "allDoors"
 UserGroup o--> "*" Area : availableAreas
-UserGroup *--> "1..*" Schedule : schedules
+UserGroup --> "1" Schedule : schedule
 
 @enduml

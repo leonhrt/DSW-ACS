@@ -1,5 +1,6 @@
 package baseNoStates;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserGroup {
@@ -7,14 +8,18 @@ public class UserGroup {
     private ArrayList<String> actions;
     private ArrayList<User> users;
     private ArrayList<Area> availableAreas;
-    private ArrayList<Schedule> schedules;
+    private Schedule schedule;
 
     public UserGroup(String name, ArrayList<String> actions, ArrayList<User> users,
-                     ArrayList<Area> availableAreas, ArrayList<Schedule> schedules) {
+                     ArrayList<Area> availableAreas, Schedule schedule) {
         this.name = name;
         this.actions = actions;
         this.users = users;
         this.availableAreas = availableAreas;
-        this.schedules = schedules;
+        this.schedule = schedule;
+    }
+
+    public boolean checkAllowedDateTime(LocalDateTime now) {
+        return schedule.allowedDateTime(now);
     }
 }

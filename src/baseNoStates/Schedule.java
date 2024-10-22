@@ -2,6 +2,7 @@ package baseNoStates;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class Schedule {
@@ -17,5 +18,22 @@ public class Schedule {
         this.fromHour = fromHour;
         this.toHour = toHour;
         this.weekdays = weekdays;
+    }
+
+    // Temporal constructor
+    public Schedule(){}
+
+    public boolean allowedDateTime(LocalDateTime now) {
+        return checkDate(now.toLocalDate()) && checkTime(now.toLocalTime());
+    }
+
+    private boolean checkDate(LocalDate now) {
+        return (now.isAfter(fromDate) || now.equals(fromDate)) &&
+                (now.isBefore(toDate) || now.equals(toDate));
+    }
+
+    private boolean checkTime(LocalTime now) {
+        return (now.isAfter(fromHour) || now.equals(fromHour)) &&
+                (now.isBefore(toHour) || now.equals(toHour));
     }
 }

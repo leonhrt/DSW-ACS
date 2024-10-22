@@ -7,9 +7,9 @@ public class DirectoryUserGroups {
 
     // TODO: implement this
     public static void makeUserGroups() {
-        userGroups.add(new UserGroup("Admin", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-        userGroups.add(new UserGroup("Manager", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
-        userGroups.add(new UserGroup("Employee", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+        userGroups.add(new UserGroup("Admin", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Schedule()));
+        userGroups.add(new UserGroup("Manager", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Schedule()));
+        userGroups.add(new UserGroup("Employee", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Schedule()));
     }
 
     // TODO: implement this
