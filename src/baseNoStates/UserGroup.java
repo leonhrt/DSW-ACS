@@ -22,4 +22,8 @@ public class UserGroup {
     public boolean checkAllowedDateTime(LocalDateTime now) {
         return schedule.allowedDateTime(now);
     }
+
+    public boolean canDoAction(String action) {
+        return actions.contains(action);
+    }
 }

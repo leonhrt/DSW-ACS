@@ -29,7 +29,7 @@ public class User {
   }
 
   public boolean canDoAction(String action) {
-    return false;
+    return userGroup.canDoAction(action);
   }
 
   private ArrayList<Space> getSpaces() {

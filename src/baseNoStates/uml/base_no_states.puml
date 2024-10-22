@@ -136,6 +136,8 @@ class User {
 + User(name: String, credential: String)
 + toString() : String
 + canBeInSpace(sp : Space) : boolean
++ canSendRequests(now : LocalDateTime) : boolean
++ canDoAction(action : String) : boolean
 }
 
 abstract Class Area{
@@ -159,6 +161,7 @@ class UserGroup {
 + UserGroup(name : String, actions : String[], users : User[],
  availableAreas : Area[], schedules : Schedule[])
 + checkAllowedDateTime(now : LocalDateTime) : boolean
++ canDoAction(action : String) : boolean
 }
 
 class Schedule {
