@@ -38,6 +38,17 @@ class DirectoryUsers {
 + {static} findUserByCredential(credential : String) : User
 }
 
+class DirectoryAreas{
+-rootArea : Area
+-allDoors : Door[]
+-allAreas : Area[]
++makeAreas()
++findAreaById(id : String) : Area
++findDoorById(id : String) : Door
++getAllDoors() : Door[]
++addDoor(door : Door)
+}
+
 class Door {
 - id : String
 - closed : boolean
