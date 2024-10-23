@@ -1,16 +1,19 @@
 package baseNoStates;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+//TODO: Modify spaces to use UserGroup instead
 public class User {
-  private final String name;
-  private final String credential;
-  private final ArrayList<Space> spaces = new ArrayList<>();
+  public final String name;
+  public final String credential;
+  public final UserGroup userGroup;
 
-  public User(String name, String credential, ArrayList<Space> spaces) {
+  public User(String name, String credential, UserGroup userGroup) {
     this.name = name;
     this.credential = credential;
-    this.spaces.addAll(spaces);
+    this.userGroup = userGroup;
+    this.userGroup.addUser(this);
   }
 
   public String getCredential() {
@@ -18,11 +21,15 @@ public class User {
   }
 
   public boolean canBeInSpace(Space space) {
-    return spaces.contains(space);
+    return userGroup.userCanBeInSpace(space);
   }
 
-  private ArrayList<Space> getSpaces() {
-    return spaces;
+  public boolean canSendRequests(LocalDateTime now) {
+    return userGroup.checkAllowedDateTime(now);
+  }
+
+  public boolean canDoAction(String action) {
+    return userGroup.canDoAction(action);
   }
 
   @Override

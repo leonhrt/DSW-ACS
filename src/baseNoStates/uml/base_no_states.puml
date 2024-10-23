@@ -32,15 +32,11 @@ class DirectoryDoors {
 + {static} getAllDoors() : Door[]
 }
 
-DirectoryDoors --> "*" Door : "allDoors"
-
 class DirectoryUsers {
 - {static} users : User[]
 + {static} makeUsers()
 + {static} findUserByCredential(credential : String) : User
 }
-
-DirectoryUsers --> "*" User : "users"
 
 class Door {
 - id : String
@@ -119,20 +115,6 @@ class Actions{
 }
 }
 
-class DirectoryAreas{
--rootArea : Area
--allDoors : Door[]
--allAreas : Area[]
-+makeAreas()
-+findAreaById(id : String) : Area
-+findDoorById(id : String) : Door
-+getAllDoors() : Door[]
-+addDoor(door : Door)
-}
-
-
-
-
 class User {
 - name : String
 - credential : String
@@ -140,6 +122,8 @@ class User {
 + User(name: String, credential: String)
 + toString() : String
 + canBeInSpace(sp : Space) : boolean
++ canSendRequests(now : LocalDateTime) : boolean
++ canDoAction(action : String) : boolean
 }
 
 abstract Class Area{
@@ -151,6 +135,35 @@ abstract Class Area{
 +findAreaById(id : String) : Area
 }
 
+class DirectoryUserGroups {
+- {static} userGroup: UserGroup[]
++ {static} makeUserGroups()
++ {static} findUserByCredential(credential : String) : User
+}
+
+class UserGroup {
+- name : String
+- actions : String[]
++ UserGroup(name : String, actions : String[], users : User[],
+ availableAreas : Area[], schedules : Schedule[])
++ checkAllowedDateTime(now : LocalDateTime) : boolean
++ canDoAction(action : String) : boolean
++ userCanBeInSpace(space : Space) : boolean
+}
+
+class Schedule {
+- fromDate : LocalDate
+- toDate : LocalDate
+- fromHour : LocalTime
+- toHour : LocalTime
+- weekdays : Set<DayOfWeek>
++ Schedule(fromDate : LocalDate, toDate : LocalDate,
+ fromHour : LocalTime, toHour : LocalTime, weekdays : Set<DayOfWeek>)
++ allowedDateTime(now : LocalDateTime) : boolean
+- checkDate(now : LocalDate) : boolean
+- checkTime(now : LocalTime) : boolean
+- checkWeekday(now : DayOfWeek) : boolean
+}
 
 class Main {
 + {static} main(args : String)
@@ -162,17 +175,24 @@ DiretoryUsers.makeUsers()
 new Webserver()
 end note
 
-Main -[hidden]down- Webserver
-Webserver -[hidden]down- DirectoryDoors
-DirectoryDoors -[hidden]right- DirectoryUsers
-
+'Main -[hidden]down- Webserver
+'Webserver -[hidden]down- DirectoryDoors
+'DirectoryDoors -[hidden]right- DirectoryUsers
+DirectoryAreas -[hidden]left- DirectoryUserGroups
 
 Door --> " 1" DoorState : state
-Door -> "1" Space : fromSpace
-Door -> "1" Space : toSpace
-Space "1" *-left- "*" Door : doors
-User -> "*" Area
+Door --> "1" Space : fromSpace
+Door --> "1" Space : toSpace
+Space "1" *-- "*" Door : doors
+'User -> "*" Area
 Partition "1" *-- "*" Area : spaces
-DirectoryAreas -down-> "1" Area : rootArea
+DirectoryAreas --> "1" Area : rootArea
+'DirectoryUsers --> "*" User : "users"
+DirectoryUserGroups o--> "1..*" UserGroup : userGroups
+UserGroup "1\nuserGroup" *--> "users\n*" User
+DirectoryDoors --> "*" Door : "allDoors"
+UserGroup o--> "*" Area : availableAreas
+UserGroup --> "1" Schedule : schedule
+DirectoryUsers o--> "*" User : users
 
 @enduml
