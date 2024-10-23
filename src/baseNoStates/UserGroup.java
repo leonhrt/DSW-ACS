@@ -6,11 +6,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UserGroup {
-    public String name;
-    public Set<String> actions;
-    public ArrayList<User> users;
-    public ArrayList<Space> availableSpaces;
-    public Schedule schedule;
+    private String name;
+    private Set<String> actions;
+    private ArrayList<User> users;
+    private ArrayList<Space> availableSpaces;
+    private Schedule schedule;
 
     public UserGroup(String name, Set<String> actions, ArrayList<User> users,
                      ArrayList<Space> availableSpaces, Schedule schedule) {

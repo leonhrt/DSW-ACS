@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 //TODO: Modify spaces to use UserGroup instead
 public class User {
-  public final String name;
-  public final String credential;
-  public final UserGroup userGroup;
+  private final String name;
+  private final String credential;
+  private final UserGroup userGroup;
 
   public User(String name, String credential, UserGroup userGroup) {
     this.name = name;

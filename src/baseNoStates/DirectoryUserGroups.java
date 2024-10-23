@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.util.*;
 
 public class DirectoryUserGroups {
-  public static final ArrayList<UserGroup> userGroups = new ArrayList<>();
+  private static final ArrayList<UserGroup> userGroups = new ArrayList<>();
 
   public static void makeUserGroups() {
     // All the available areas of the ACS

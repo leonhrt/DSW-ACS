@@ -129,8 +129,8 @@ class Actions{
 class User {
 - name : String
 - credential : String
--spaces : Space[]
-+ User(name: String, credential: String)
++ User(name: String, credential: String,
+userGroup : UserGroup)
 + toString() : String
 + canBeInSpace(sp : Space) : boolean
 + canSendRequests(now : LocalDateTime) : boolean
@@ -149,17 +149,19 @@ abstract Class Area{
 class DirectoryUserGroups {
 - {static} userGroup: UserGroup[]
 + {static} makeUserGroups()
-+ {static} findUserByCredential(credential : String) : User
++ {static} findUserGroupByName(name : String) : UserGroup
 }
 
 class UserGroup {
 - name : String
 - actions : String[]
-+ UserGroup(name : String, actions : String[], users : User[],
- availableAreas : Area[], schedules : Schedule[])
++ UserGroup(name : String)
++ UserGroup(name : String, actions : String[],
+availableAreas : Area[], schedules : Schedule[])
 + checkAllowedDateTime(now : LocalDateTime) : boolean
 + canDoAction(action : String) : boolean
 + userCanBeInSpace(space : Space) : boolean
++ addUser(user : User)
 }
 
 class Schedule {
@@ -202,7 +204,7 @@ DirectoryAreas --> "1" Area : rootArea
 DirectoryUserGroups o--> "1..*" UserGroup : userGroups
 UserGroup "1\nuserGroup" *--> "users\n*" User
 DirectoryDoors --> "*" Door : "allDoors"
-UserGroup o--> "*" Area : availableAreas
+UserGroup o--> "*" Area : availableSpaces
 UserGroup --> "1" Schedule : schedule
 DirectoryUsers o--> "*" User : users
 
