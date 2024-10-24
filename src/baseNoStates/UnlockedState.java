@@ -39,6 +39,11 @@ public class UnlockedState implements DoorState {
   }
 
   @Override
+  public void unlockShortly(Door door) {
+    System.out.println("The door is already unlocked, can't unlock shortly");
+  }
+
+  @Override
   public String getStateName() {
     return "unlocked";
   }

@@ -9,5 +9,7 @@ public interface DoorState {
 
   void unlock(Door door);
 
+  void unlockShortly(Door door);
+
   String getStateName();
 }

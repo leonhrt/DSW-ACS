@@ -25,6 +25,12 @@ public class LockedState implements DoorState {
   }
 
   @Override
+  public void unlockShortly(Door door) {
+    System.out.println("Unlocking the door for 10 seconds");
+    door.setState(new UnlockShortlyState());
+  }
+
+  @Override
   public String getStateName() {
     return "locked";
   }
