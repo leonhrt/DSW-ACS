@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The Space class represents a specific area within a partition,
- * which can contain doors for access. It extends the Area class.
+ * The Space class represents a leaf object in the Composite design pattern.
+ * It does not contain any child objects, but it implements the common interface
+ * defined by the Area class, allowing clients to treat it uniformly.
+ *
+ * Spaces can contain doors and provide access to other areas.
  */
 public class Space extends Area {
 

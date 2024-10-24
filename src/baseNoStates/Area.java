@@ -3,9 +3,13 @@ package baseNoStates;
 import java.util.ArrayList;
 
 
+
 /**
- * The Area class represents an abstract area within a structure,
- * which can contain partitions, spaces and doors. It serves as a base class for specific area types.
+ * The Area class serves as the abstract component in the Composite design pattern.
+ * It defines the common interface for all concrete objects (such as Partition and Space)
+ * that can be part of a hierarchical structure.
+ *
+ * This class allows clients to interact with both individual objects and their compositions uniformly.
  */
 public abstract class Area {
   protected String id;

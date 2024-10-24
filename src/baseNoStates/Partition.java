@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
- * The Partition class represents a specific section within an area,
- * which can contain other spaces and partitions.
- * It extends the Area class.
+ * The Partition class represents a composite object in the Composite design pattern.
+ * It can contain other Area objects, such as Space instances or other Partition instances.
+ *
+ * This allows for the creation of a tree structure where partitions can contain multiple areas,
+ * enabling hierarchical organization and manipulation of the entire structure.
  */
 public class Partition extends Area {
 
@@ -96,10 +99,11 @@ public class Partition extends Area {
   }
 
   /**
-   * Adds an area to this partition's list of areas,
+   * Adds an Area to this Partition's collection of areas,
    * ensuring it is not added more than once.
+   * This method allows for the dynamic addition of areas to the composite structure.
    *
-   * @param area the area to be added to this partition
+   * @param area the Area to be added
    */
   public void addArea(Area area) {
     if (!areas.contains(area)) {
