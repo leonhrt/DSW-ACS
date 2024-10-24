@@ -15,6 +15,8 @@ public class Main {
         System.out.println("  " + user.name);
       }
     }*/
+    Clock.getInstance().start();
     new WebServer();
+    Clock.getInstance().stop();
   }
 }

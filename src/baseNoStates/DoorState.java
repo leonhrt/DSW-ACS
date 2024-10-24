@@ -1,13 +1,20 @@
 package baseNoStates;
 
-public interface DoorState {
-  void open(Door door);
+public abstract class DoorState {
+  protected Door door;
+  protected String name;
 
-  void close(Door door);
+  public DoorState(Door door) {
+    this.door = door;
+  }
 
-  void lock(Door door);
+  public abstract void open();
+  public abstract void close();
+  public abstract void lock();
+  public abstract void unlock();
+  public abstract void unlockShortly();
 
-  void unlock(Door door);
-
-  String getStateName();
+  public String getStateName() {
+    return name;
+  }
 }

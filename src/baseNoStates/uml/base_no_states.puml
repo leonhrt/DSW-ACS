@@ -87,41 +87,66 @@ class Partition extends Area{
 
 
 package "doorstates" {
-abstract class DoorState{
-# door: Door
-#name : String
-+DoorState(door : door)
-+open()
-+close()
-+lock()
-+unlock()
+abstract class DoorState {
+# door : Door
+# name : String
++ DoorState(door : door)
++ {abstract} open()
++ {abstract} close()
++{abstract} lock()
++ {abstract} unlock()
++ getStateName() : String
 }
 
-class Locked extends DoorState{
-+DoorState(door : Door)
-+open()
-+close()
-+lock()
-+unlock()
+class LockedState extends DoorState{
++ LockedState(door : Door)
++ open()
++ close()
++ lock()
++ unlock()
++ unlockShortly()
 }
 
-class Unlocked extends DoorState{
-+DoorState(door : Door)
-+open()
-+close()
-+lock()
-+unlock()
+class UnlockedState extends DoorState{
++ UnlockedState(door : Door)
++ open()
++ close()
++ lock()
++ unlock()
++ unlockShortly()
+}
+
+class UnlockShortlyState extends DoorState implements Observer{
++ UnlockShortlyState(door : Door)
++ open()
++ close()
++ lock()
++ unlock()
++ unlockShortly()
++ update(o : Observable, arg : Object)
+}
+
+class ProppedState extends DoorState {
++ ProppedState(door : Door)
++ open()
++ close()
++ lock()
++ unlock()
++ unlockShortly()
 }
 
 class States{
-+LOCKED : String
-+UNLOCKED : String
++ {static} LOCKED : String
++ {static} UNLOCKED : String
++ {static} UNLOCKED_SHORTLY : String
++ {static} PROPPED : String
 }
 
 class Actions{
-+LOCK : String
-+UNLOCK : String
-+OPEN : String
++ LOCK : String
++ UNLOCK : String
++ UNLOCKED_SHORTLY : String
++ OPEN : String
 + CLOSE : String
 }
 }
@@ -178,6 +203,17 @@ class Schedule {
 - checkWeekday(now : DayOfWeek) : boolean
 }
 
+class Clock {
+- date : LocalDateTime
+- timer : Timer
+- period : int
+- {static} uniqueInstance : Clock
+- Clock(period : int)
++ start()
++ stop()
++ {static} getInstance() : Clock
+}
+
 class Main {
 + {static} main(args : String)
 }
@@ -188,12 +224,13 @@ DiretoryUsers.makeUsers()
 new Webserver()
 end note
 
-'Main -[hidden]down- Webserver
+Main -[hidden]down- Webserver
 'Webserver -[hidden]down- DirectoryDoors
 'DirectoryDoors -[hidden]right- DirectoryUsers
 DirectoryAreas -[hidden]left- DirectoryUserGroups
+Clock -[hidden]right- Door
 
-Door --> " 1" DoorState : state
+Door "1 door" --> "1 state" DoorState
 Door --> "1" Space : fromSpace
 Door --> "1" Space : toSpace
 Space "1" *-- "*" Door : doors
