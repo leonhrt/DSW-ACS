@@ -4,7 +4,6 @@ import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Observable;
 import java.util.Observer;
-import java.time.Duration;
 
 public class UnlockShortlyState extends DoorState implements Observer {
   private LocalTime clockStartTime;
@@ -20,14 +19,22 @@ public class UnlockShortlyState extends DoorState implements Observer {
 
   @Override
   public void open() {
-    System.out.println("Oppening the door...");
-    door.setClosed(false);
+    if (!door.isClosed()) {
+      System.out.println("Opening the door...");
+      door.setClosed(false);
+    } else {
+      System.out.println("The door is already open");
+    }
   }
 
   @Override
   public void close() {
-    System.out.println("Closing the door...");
-    door.setClosed(true);
+    if (door.isClosed()) {
+      System.out.println("The door is already closed");
+    } else {
+      System.out.println("Closing the door...");
+      door.setClosed(true);
+    }
   }
 
   @Override
@@ -37,7 +44,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
 
   @Override
   public void unlock() {
-    System.out.println("The door is unlocked temporarily");
+    System.out.println("The door is unlocked temporarily, so can't unlock");
   }
 
   @Override
@@ -50,13 +57,21 @@ public class UnlockShortlyState extends DoorState implements Observer {
     LocalTime currentTime = clock.getDate().toLocalTime();
     int elapsedTime = (int) clockStartTime.until(currentTime, ChronoUnit.SECONDS);
 
-    /*if (elapsedTime >= 10) {
-      if (this.isClosed()) {
-        door.setState(new LockedState());
-      } else {
-        door.setState(new ProppedState());
-      }
-      clock.deleteObserver(this);
-    }*/
+    if (elapsedTime < 10) {
+      return;
+    }
+
+    String state;
+    if (door.isClosed()) {
+      door.setState(new LockedState(door));
+      state = States.LOCKED;
+    } else {
+      door.setState(new ProppedState(door));
+      state = States.PROPPED;
+    }
+
+    System.out.println("The door " + door.getId() + " is now in " + state + " state");
+
+    clock.deleteObserver(this);
   }
 }
