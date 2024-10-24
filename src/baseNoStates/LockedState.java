@@ -1,37 +1,37 @@
 package baseNoStates;
 
-public class LockedState implements DoorState {
+public class LockedState extends DoorState {
+  public LockedState(Door door) {
+    super(door);
+    name = States.LOCKED;
+  }
+
   @Override
-  public void open(Door door) {
+  public void open() {
     System.out.println("Can't open the door, it's locked");
   }
 
   @Override
-  public void close(Door door) {
+  public void close() {
     System.out.println("The door is already closed and locked");
   }
 
   @Override
-  public void lock(Door door) {
+  public void lock() {
     System.out.println("The door is already locked");
   }
 
   //as the actual state is locked, we set the door's state to
   //unlocked with a new UnlockedState
   @Override
-  public void unlock(Door door) {
+  public void unlock() {
     System.out.println("Unlocking the door");
-    door.setState(new UnlockedState());
+    door.setState(new UnlockedState(door));
   }
 
   @Override
-  public void unlockShortly(Door door) {
+  public void unlockShortly() {
     System.out.println("Unlocking the door for 10 seconds");
-    door.setState(new UnlockShortlyState());
-  }
-
-  @Override
-  public String getStateName() {
-    return "locked";
+    door.setState(new UnlockShortlyState(door));
   }
 }

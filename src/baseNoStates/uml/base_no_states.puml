@@ -205,7 +205,7 @@ Main -[hidden]down- Webserver
 DirectoryAreas -[hidden]left- DirectoryUserGroups
 Clock -[hidden]right- Door
 
-Door --> " 1" DoorState : state
+Door "1 door" --> "1 state" DoorState
 Door --> "1" Space : fromSpace
 Door --> "1" Space : toSpace
 Space "1" *-- "*" Door : doors

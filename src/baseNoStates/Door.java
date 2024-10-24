@@ -13,7 +13,7 @@ public class Door {
   public Door(String id, Space fromSpace, Space toSpace) {
     this.id = id;
     closed = true;
-    this.state = new UnlockedState();
+    this.state = new UnlockedState(this);
     this.fromSpace = fromSpace;
     this.toSpace = toSpace;
 
@@ -37,19 +37,19 @@ public class Door {
   private void doAction(String action) {
     switch (action) {
       case Actions.OPEN:
-        state.open(this);
+        state.open();
         break;
       case Actions.CLOSE:
-        state.close(this);
+        state.close();
         break;
       case Actions.LOCK:
-        state.lock(this);
+        state.lock();
         break;
       case Actions.UNLOCK:
-        state.unlock(this);
+        state.unlock();
         break;
       case Actions.UNLOCK_SHORTLY:
-        state.unlockShortly(this);
+        state.unlockShortly();
         break;
       default:
         assert false : "Unknown action " + action;

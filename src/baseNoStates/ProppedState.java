@@ -1,33 +1,33 @@
 package baseNoStates;
 
-public class ProppedState implements DoorState {
+public class ProppedState extends DoorState {
+  public ProppedState(Door door) {
+    super(door);
+    name = States.PROPPED;
+  }
+
   @Override
-  public void open(Door door) {
+  public void open() {
 
   }
 
   @Override
-  public void close(Door door) {
+  public void close() {
 
   }
 
   @Override
-  public void lock(Door door) {
+  public void lock() {
 
   }
 
   @Override
-  public void unlock(Door door) {
+  public void unlock() {
 
   }
 
   @Override
-  public void unlockShortly(Door door) {
+  public void unlockShortly() {
 
-  }
-
-  @Override
-  public String getStateName() {
-    return "";
   }
 }
