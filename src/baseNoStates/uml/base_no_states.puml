@@ -199,10 +199,11 @@ DiretoryUsers.makeUsers()
 new Webserver()
 end note
 
-'Main -[hidden]down- Webserver
+Main -[hidden]down- Webserver
 'Webserver -[hidden]down- DirectoryDoors
 'DirectoryDoors -[hidden]right- DirectoryUsers
 DirectoryAreas -[hidden]left- DirectoryUserGroups
+Clock -[hidden]right- Door
 
 Door --> " 1" DoorState : state
 Door --> "1" Space : fromSpace
