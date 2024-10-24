@@ -182,9 +182,11 @@ class Clock {
 - date : LocalDateTime
 - timer : Timer
 - period : int
-+ Clock(period : int)
+- {static} uniqueInstance : Clock
+- Clock(period : int)
 + start()
 + stop()
++ {static} getInstance() : Clock
 }
 
 class Main {

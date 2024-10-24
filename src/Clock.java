@@ -6,8 +6,9 @@ public class Clock {
     private LocalDateTime date;
     private Timer timer;
     private int period;
+    private static Clock uniqueInstance = null;
 
-    public Clock(int period) {
+    private Clock(int period) {
         this.period = period;
         timer = new Timer();
     }
@@ -24,6 +25,13 @@ public class Clock {
 
     public void stop() {
         timer.cancel();
+    }
+
+    public static synchronized Clock getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new Clock(1);
+        }
+        return uniqueInstance;
     }
 
     public int getPeriod() {
