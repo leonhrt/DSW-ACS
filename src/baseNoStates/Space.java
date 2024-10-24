@@ -3,22 +3,42 @@ package baseNoStates;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Space class represents a specific area within a partition,
+ * which can contain doors for access. It extends the Area class.
+ */
 public class Space extends Area {
 
   private final ArrayList<Door> doors = new ArrayList<>();
 
+  /**
+   * Constructs a Space with the specified ID and parent partition.
+   * This constructor adds the space to its parent's area list, if it does have one.
+   *
+   * @param id the unique identifier for the space
+   * @param parentPartition the partition containing this space
+   */
   public Space(String id, Partition parentPartition) {
     super(id, parentPartition);
 
-    //add this space to the parent partition's areas list
     if(parentPartition!=null) parentPartition.addArea(this);
   }
 
+  /**
+   * Finds an area by its ID using the Area superclass method.
+   *
+   * @param id the ID of the area to find
+   * @return the area with the specified ID, or null if not found
+   */
   public Area findAreaById(String id) {
     return super.findAreaById(id);
   }
 
-  //return an ArrayList containing just this Space
+  /**
+   * Retrieves a list containing only this space.
+   *
+   * @return an ArrayList containing this space
+   */
   @Override
   public ArrayList<Space> getSpaces() {
     return new ArrayList<>(List.of(this));
@@ -29,7 +49,12 @@ public class Space extends Area {
     return doors;
   }
 
-  //add the Door if it isn't on the current doors list
+  /**
+   * Adds a door to this space's list of doors,
+   * ensuring it is not added more than once.
+   *
+   * @param door the door to be added to this space
+   */
   public void addDoor(Door door) {
     if (!doors.contains(door)) {
       doors.add(door);

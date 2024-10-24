@@ -4,23 +4,45 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The Partition class represents a specific section within an area,
+ * which can contain other spaces and partitions.
+ * It extends the Area class.
+ */
 public class Partition extends Area {
 
   private final ArrayList<Area> areas = new ArrayList<>();
 
+  /**
+   * Constructs a Partition with the specified ID and parent partition.
+   * This constructor adds the partition to its parent's area list, if it has one.
+   *
+   * @param id the unique identifier for the partition
+   * @param parentPartition the parent partition containing this partition, or null if it doesn't have one.
+   */
   public Partition(String id, Partition parentPartition) {
     super(id, parentPartition);
 
-    //add this partition to the parent partition's (if there's one) areas list
     if (parentPartition != null) {
       parentPartition.addArea(this);
     }
   }
 
+  /**
+   * Finds an area by its ID using the Area superclass.
+   *
+   * @param id the ID of the area to find
+   * @return the area with the specified ID, or null if not found
+   */
   public Area findAreaById(String id) {
     return super.findAreaById(id);
   }
 
+  /**
+   * Retrieves a list of spaces contained within this partition and its sub-partitions.
+   *
+   * @return an ArrayList of spaces in this partition
+   */
   @Override
   public ArrayList<Space> getSpaces() {
     //create a Space array to store Space items
@@ -38,9 +60,14 @@ public class Partition extends Area {
     return spaces;
   }
 
-  //we look for the spaces contained in the partition,
-  //then the doors contained in each space,
-  //then we keep the ones that give access from outside the area
+
+  /**
+   * Retrieves a list of doors that provide access from outside this partition.
+   * This method checks for doors in spaces contained in this partition
+   * and excludes doors that connect spaces both contained within the partition.
+   *
+   * @return an ArrayList of doors giving access to this partition from outside
+   */
   @Override
   public ArrayList<Door> getDoorsGivingAccess() {
     //get all spaces of the partition
@@ -68,7 +95,12 @@ public class Partition extends Area {
      */
   }
 
-  //add the area to areas only if it isn't in it yet
+  /**
+   * Adds an area to this partition's list of areas,
+   * ensuring it is not added more than once.
+   *
+   * @param area the area to be added to this partition
+   */
   public void addArea(Area area) {
     if (!areas.contains(area)) {
       areas.add(area);

@@ -3,9 +3,21 @@ package baseNoStates;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * The DirectoryDoors class manages a collection of doors within the
+ * system. It provides methods for creating doors and retrieving them by their ID.
+ */
 public final class DirectoryDoors {
   private static ArrayList<Door> allDoors;
 
+
+  /**
+   * Initializes the doors list with predefined door connections
+   * between spaces in the system.
+   *
+   * This method creates doors that connect various spaces such as
+   * exterior, parking, stairs, halls, and rooms.
+   */
   public static void makeDoors() {
     //getting the spaces
     Space exterior = (Space) DirectoryAreas.findAreaById("exterior");
@@ -36,6 +48,12 @@ public final class DirectoryDoors {
     allDoors = new ArrayList<>(Arrays.asList(d1, d2, d3, d4, d5, d6, d7, d8, d9));
   }
 
+  /**
+   * Searches for a door in the list by its ID.
+   *
+   * @param id the ID of the door to search for
+   * @return the Door object if found, otherwise returns null and prints a message
+   */
   public static Door findDoorById(String id) {
     for (Door door : allDoors) {
       if (door.getId().equals(id)) {
@@ -46,7 +64,12 @@ public final class DirectoryDoors {
     return null; // otherwise we get a Java error
   }
 
-  // this is needed by RequestRefresh
+  /**
+   * Retrieves a list of all doors in the system.
+   * (This is needed by RequestRefresh)
+   *
+   * @return an ArrayList of all doors
+   */
   public static ArrayList<Door> getAllDoors() {
     System.out.println(allDoors);
     return allDoors;

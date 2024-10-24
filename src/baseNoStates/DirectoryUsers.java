@@ -3,13 +3,22 @@ package baseNoStates;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The DirectoryUsers class manages a collection of users within the system.
+ * It provides methods for creating and retrieving users based on their credentials.
+ */
 public final class DirectoryUsers {
   private static final ArrayList<User> users = new ArrayList<>();
 
+  /**
+   * Initializes the users list with predefined user accounts
+   * and their associated groups.
+   *
+   * This method creates user accounts with specific groups and
+   * privileges. The user groups include Administrator, Manager, Employee,
+   * and Blank, each with defined access rights.
+   */
   public static void makeUsers() {
-    //TODO: make user groups according to the specifications in the comments, because
-    // now all are the same
-
     /*
     These are the groups that belong to each user
     Administrator: Ana
@@ -55,6 +64,12 @@ public final class DirectoryUsers {
     users.add(new User("Ana", "11343", adminGroup));
   }
 
+  /**
+   * Searches for a user in the list by their credential.
+   *
+   * @param credential the credential of the user to search for
+   * @return the User object if found, otherwise returns null and prints a message
+   */
   public static User findUserByCredential(String credential) {
     for (User user : users) {
       if (user.getCredential().equals(credential)) {
