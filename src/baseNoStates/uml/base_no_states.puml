@@ -178,6 +178,15 @@ class Schedule {
 - checkWeekday(now : DayOfWeek) : boolean
 }
 
+class Clock {
+- date : LocalDateTime
+- timer : Timer
+- period : int
++ Clock(period : int)
++ start()
++ stop()
+}
+
 class Main {
 + {static} main(args : String)
 }
