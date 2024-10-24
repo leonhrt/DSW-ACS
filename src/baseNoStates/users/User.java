@@ -1,7 +1,9 @@
-package baseNoStates;
+package baseNoStates.users;
+
+import baseNoStates.areas.Space;
+import baseNoStates.users.user_groups.UserGroup;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 //TODO: Modify spaces to use UserGroup instead
 public class User {

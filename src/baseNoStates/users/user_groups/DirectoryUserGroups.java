@@ -1,4 +1,9 @@
-package baseNoStates;
+package baseNoStates.users.user_groups;
+
+import baseNoStates.areas.Area;
+import baseNoStates.areas.DirectoryAreas;
+import baseNoStates.areas.Space;
+import baseNoStates.doors.doorstates.Actions;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

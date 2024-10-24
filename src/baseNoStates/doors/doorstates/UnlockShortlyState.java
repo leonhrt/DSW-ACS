@@ -1,4 +1,6 @@
-package baseNoStates;
+package baseNoStates.doors.doorstates;
+
+import baseNoStates.doors.Door;
 
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -19,7 +21,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
 
   @Override
   public void open() {
-    if (!door.isClosed()) {
+    if (door.isClosed()) {
       System.out.println("Opening the door...");
       door.setClosed(false);
     } else {

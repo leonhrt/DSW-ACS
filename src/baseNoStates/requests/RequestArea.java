@@ -1,9 +1,9 @@
 package baseNoStates.requests;
 
-import baseNoStates.Actions;
-import baseNoStates.Area;
-import baseNoStates.DirectoryAreas;
-import baseNoStates.Door;
+import baseNoStates.doors.doorstates.Actions;
+import baseNoStates.areas.Area;
+import baseNoStates.areas.DirectoryAreas;
+import baseNoStates.doors.Door;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

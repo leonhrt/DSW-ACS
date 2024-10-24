@@ -1,7 +1,7 @@
 package baseNoStates.requests;
 
-import baseNoStates.DirectoryDoors;
-import baseNoStates.Door;
+import baseNoStates.doors.DirectoryDoors;
+import baseNoStates.doors.Door;
 
 import java.util.ArrayList;
 

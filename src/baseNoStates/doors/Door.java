@@ -1,5 +1,9 @@
-package baseNoStates;
+package baseNoStates.doors;
 
+import baseNoStates.areas.Space;
+import baseNoStates.doors.doorstates.Actions;
+import baseNoStates.doors.doorstates.DoorState;
+import baseNoStates.doors.doorstates.UnlockedState;
 import baseNoStates.requests.RequestReader;
 import org.json.JSONObject;
 

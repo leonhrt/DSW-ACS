@@ -1,10 +1,12 @@
 package baseNoStates.requests;
 
-import baseNoStates.*;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import baseNoStates.doors.DirectoryDoors;
+import baseNoStates.doors.Door;
+import baseNoStates.users.DirectoryUsers;
+import baseNoStates.users.User;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

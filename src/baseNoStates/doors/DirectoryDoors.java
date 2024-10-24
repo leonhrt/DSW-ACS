@@ -1,4 +1,7 @@
-package baseNoStates;
+package baseNoStates.doors;
+
+import baseNoStates.areas.DirectoryAreas;
+import baseNoStates.areas.Space;
 
 import java.util.ArrayList;
 import java.util.Arrays;

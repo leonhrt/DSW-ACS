@@ -1,4 +1,7 @@
-package baseNoStates;
+package baseNoStates.users.user_groups;
+
+import baseNoStates.areas.Space;
+import baseNoStates.users.User;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

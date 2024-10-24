@@ -1,4 +1,6 @@
-package baseNoStates;
+package baseNoStates.doors.doorstates;
+
+import baseNoStates.doors.Door;
 
 public class ProppedState extends DoorState {
   public ProppedState(Door door) {

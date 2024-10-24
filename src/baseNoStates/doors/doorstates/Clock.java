@@ -1,4 +1,4 @@
-package baseNoStates;
+package baseNoStates.doors.doorstates;
 
 import java.time.LocalDateTime;
 import java.util.Observable;
@@ -37,10 +37,6 @@ public class Clock extends Observable {
             uniqueInstance = new Clock();
         }
         return uniqueInstance;
-    }
-
-    public int getPeriod() {
-        return period;
     }
 
     public LocalDateTime getDate() {

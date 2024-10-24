@@ -1,4 +1,4 @@
-package baseNoStates;
+package baseNoStates.doors.doorstates;
 
 public class States {
   public static final String LOCKED = "locked";

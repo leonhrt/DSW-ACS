@@ -1,7 +1,9 @@
-package baseNoStates;
+package baseNoStates.users;
+
+import baseNoStates.users.user_groups.DirectoryUserGroups;
+import baseNoStates.users.user_groups.UserGroup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * The DirectoryUsers class manages a collection of users within the system.

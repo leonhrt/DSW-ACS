@@ -1,4 +1,6 @@
-package baseNoStates;
+package baseNoStates.areas;
+
+import baseNoStates.doors.Door;
 
 import java.util.ArrayList;
 import java.util.HashSet;
