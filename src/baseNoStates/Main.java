@@ -11,18 +11,12 @@ import baseNoStates.users.DirectoryUsers;
 
 public class Main {
   public static void main(String[] args) {
-    DirectoryAreas.makeAreas();
-    DirectoryDoors.makeDoors();
-    DirectoryUserGroups.makeUserGroups();
-    DirectoryUsers.makeUsers();
-    /*for (UserGroup userGroup : DirectoryUserGroups.userGroups) {
-      System.out.println(userGroup.name);
-      for (User user : userGroup.users) {
-        System.out.println("  " + user.name);
-      }
-    }*/
-    Clock.getInstance().start();
-    new WebServer();
-    Clock.getInstance().stop();
+    DirectoryAreas.makeAreas();           // Create the areas
+    DirectoryDoors.makeDoors();           // Create the doors
+    DirectoryUserGroups.makeUserGroups(); // Create the user groups
+    DirectoryUsers.makeUsers();           // Create the users
+    Clock.getInstance().start();          // Start the clock
+    new WebServer();                      // Start the web server
+    Clock.getInstance().stop();           // Stop the clock
   }
 }

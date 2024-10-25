@@ -1,5 +1,8 @@
 package baseNoStates.doors.doorstates;
 
+/**
+ * The Actions class contains all the possible actions that can be performed on a door.
+ */
 public final class Actions {
   // possible actions in reader and area requests
   public static final String LOCK = "lock";
