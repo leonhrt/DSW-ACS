@@ -53,7 +53,7 @@ public class Partition extends Area {
     //create a Space array to store Space items
     ArrayList<Space> spaces = new ArrayList<>();
 
-    //recursivily get the Space items from the current Partition and sub Partitions
+    //recursively get the Space items from the current Partition and sub Partitions
     for (Area area : areas) {
       if (area instanceof Space) {                //it's a space, add it to the list
         spaces.add((Space) area);
@@ -81,6 +81,7 @@ public class Partition extends Area {
     Set<Space> spaceSet = new HashSet<>(spaces);
 
     ArrayList<Door> doors = new ArrayList<>();
+    // loop through all spaces and add doors that are not between two spaces of the partition
     for (Space sp : spaces) {
       for(Door door : sp.getDoorsGivingAccess()){
         if(!(spaceSet.contains(door.getFromSpace()) && spaceSet.contains(door.getToSpace()))){

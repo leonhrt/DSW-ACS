@@ -42,7 +42,7 @@ public final class DirectoryUsers {
     // employees :
     // Sep. 1 this year to Mar. 1 next year
     // week days 9-17h
-    // just shortly unlock
+    // just open, close and shortly unlock
     // ground floor, floor1, exterior, stairs (this, for all), that is, everywhere but the parking
     users.add(new User("Ernest", "74984", employeeGroup));
     users.add(new User("Eulalia", "43295", employeeGroup));

@@ -10,9 +10,21 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
+/**
+ * The DirectoryUsersGroups class manages the creation and retrieval of user groups within the system.
+ */
 public class DirectoryUserGroups {
-  private static final ArrayList<UserGroup> userGroups = new ArrayList<>();
+  private static final ArrayList<UserGroup> userGroups = new ArrayList<>(); // All the user groups in the system
 
+  /**
+   * Creates and initializes predefined user groups in the system.
+   *
+   * The predefined groups include:
+   * Administrator: Full access to all actions, spaces, and at any time.
+   * Manager: Access to all actions and spaces with limited time constraints.
+   * Employee: Restricted actions and access to spaces, excluding the parking area, with working hours.
+   * Blank: A placeholder group with no permissions.
+   */
   public static void makeUserGroups() {
     // All the available areas of the ACS
     ArrayList<Area> availableAreas = DirectoryAreas.getAllAreas();
@@ -97,6 +109,12 @@ public class DirectoryUserGroups {
     userGroups.add(new UserGroup("Blank"));
   }
 
+  /**
+   * Retrieves a user group by its name.
+   *
+   * @param name The name of the user group to search for.
+   * @return The UserGroup object with the specified name, or null if not found.
+   */
   public static UserGroup getUserGroupByName(String name) {
     for (UserGroup userGroup : userGroups) {
       if (userGroup.getName().equals(name)) {
