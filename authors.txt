@@ -11,12 +11,10 @@ sabem i entenem la solució, com funciona i com ha estat desarrollada.
 L'Arnau 'ha encarregat principalment del patró State; la configuració de les
 accions i la creació dels estats Locked i Unlocked.
 
-Ferran:
 El Ferran s'ha encarregat principalment del patró Composite; la creació de les
 àrees, la seva administració, l'assignació de portes, de privilegis d'arees a usuaris,
 i la resolució dels requests.
 
-Leonardo:
-El Leonardo s'ha encarregat principalment del patró Singleton; els grups d'usuaris i
+El Leonardo s'ha encarregat principalment dels patrons Observer i Singleton; els grups d'usuaris i
 els seus privilegis horaris, la creació i configuració del rellotge, i els estats
 Unlock Shortly i Propped.
