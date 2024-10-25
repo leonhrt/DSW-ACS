@@ -4,6 +4,8 @@ import baseNoStates.doors.Door;
 
 /**
  * The ProppedState class represents the state of a door when it is propped.
+ *
+ * This class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class ProppedState extends DoorState {
   public ProppedState(Door door) {

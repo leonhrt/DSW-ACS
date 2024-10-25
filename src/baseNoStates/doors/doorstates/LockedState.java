@@ -4,6 +4,8 @@ import baseNoStates.doors.Door;
 
 /**
  * The LockedState class represents the state of a door when it is locked.
+ *
+ * This class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class LockedState extends DoorState {
   public LockedState(Door door) {

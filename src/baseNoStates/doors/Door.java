@@ -11,6 +11,8 @@ import org.json.JSONObject;
  * The Door class represents a physical door within a building.
  * A door can be in one of several states, these are represented by the DoorState class.
  * Also, the user can interact with the door with open and close actions if they have the right permissions.
+ *
+ * This class is a part of the State Pattern implemented for the DoorStates
  */
 public class Door {
   private final String id;

@@ -11,7 +11,9 @@ import java.util.TimerTask;
  *
  * This clock runs at a regular interval, updating the current time and notifying its observers.
  * It can be started and stopped, and there is only one instance of the clock available throughout
- * the application (Singleton pattern)
+ * the application (Singleton pattern).
+ *
+ * It also is used in the Observer pattern as the Observable class.
  */
 public class Clock extends Observable {
     private LocalDateTime date;                 // Variable used to store the current date and time

@@ -14,6 +14,7 @@ import java.util.Observer;
  * interface to receive updates from the clock.
  *
  * This class is a part of the Observer Pattern.
+ * Also, this class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class UnlockShortlyState extends DoorState implements Observer {
   private LocalTime clockStartTime; // The moment when the door was unlocked shortly
