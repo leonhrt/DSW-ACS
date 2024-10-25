@@ -1,14 +1,22 @@
+Arnau Vidal Ferrer - 1636427
+Ferran Sogas Linares - 1679933
+Leonardo Ruben Edenak Chouev - 1689435
+
 Tots tres hem participat activament al desenvolupament del projecte.
 Ens hem dividit les tasques equitativament, però tot i tenir cadascú certes tasques
 assignades, ens hem anat ajudant entre nosaltres
 constantment al llarg de tota la fita, obtenint com a resultat un treball en que tots
 sabem i entenem la solució, com funciona i com ha estat desarrollada.
 
-Arnau Vidal Ferrer - 1636427
-S'ha encarregat principalment del patró State; la configuració de les accions i la creació dels estats Locked i Unlocked.
+L'Arnau 'ha encarregat principalment del patró State; la configuració de les
+accions i la creació dels estats Locked i Unlocked.
 
-Ferran Sogas Linares - 1679933
-S'ha encarregat principalment del patró Composite; la creació de les àrees, la seva administració, l'assignació de portes, de privilegis d'arees a usuaris, i la resolució dels requests.
+Ferran:
+El Ferran s'ha encarregat principalment del patró Composite; la creació de les
+àrees, la seva administració, l'assignació de portes, de privilegis d'arees a usuaris,
+i la resolució dels requests.
 
-Leonardo Ruben Edenak Chouev - 1689435
-S'ha encarregat principalment del patró Singleton; els grups d'usuaris i els seus privilegis horaris, la creació i configuració del rellotge, i els estats Unlock Shortly i Propped.
+Leonardo:
+El Leonardo s'ha encarregat principalment del patró Singleton; els grups d'usuaris i
+els seus privilegis horaris, la creació i configuració del rellotge, i els estats
+Unlock Shortly i Propped.
