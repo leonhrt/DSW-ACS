@@ -50,10 +50,10 @@ public class Partition extends Area {
    */
   @Override
   public ArrayList<Space> getSpaces() {
-    //create a Space array to store Space items
+    // create a Space array to store Space items
     ArrayList<Space> spaces = new ArrayList<>();
 
-    //recursively get the Space items from the current Partition and sub Partitions
+    // recursively get the Space items from the current Partition and sub Partitions
     for (Area area : areas) {
       if (area instanceof Space) {                //it's a space, add it to the list
         spaces.add((Space) area);
@@ -75,13 +75,14 @@ public class Partition extends Area {
    */
   @Override
   public ArrayList<Door> getDoorsGivingAccess() {
-    //get all spaces of the partition
+    // get all spaces of the partition
     ArrayList<Space> spaces = getSpaces();
-    //convert to a set to be more efficient when looking for a space in the list
+    // convert to a set to be more efficient when looking for a space in the list
     Set<Space> spaceSet = new HashSet<>(spaces);
 
     ArrayList<Door> doors = new ArrayList<>();
-    // loop through all spaces and add doors that are not between two spaces of the partition
+    // Loops through all spaces contained in this partition and their doors,
+    // then selects doors that don't connect spaces both contained within the partition.
     for (Space sp : spaces) {
       for(Door door : sp.getDoorsGivingAccess()){
         if(!(spaceSet.contains(door.getFromSpace()) && spaceSet.contains(door.getToSpace()))){
@@ -92,7 +93,7 @@ public class Partition extends Area {
     return doors;
 
     /*
-    //old implementation -> all doors inside the area are given, therefore all are closed, but exterior can be declared (in DirectoryAreas) as a space of building instead of null parentPartition
+    // old implementation -> all doors inside the area are given, therefore all are closed, but exterior can be declared (in DirectoryAreas) as a space of building instead of null parentPartition
     ArrayList<Door> doors = new ArrayList<>();
     for (Space sp : getSpaces()) {
       doors.addAll(sp.getDoorsGivingAccess());
