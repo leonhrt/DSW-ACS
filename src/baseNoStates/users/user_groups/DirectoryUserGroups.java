@@ -1,6 +1,5 @@
 package baseNoStates.users.user_groups;
 
-import baseNoStates.areas.Area;
 import baseNoStates.areas.DirectoryAreas;
 import baseNoStates.areas.Space;
 import baseNoStates.areas.visitor.FindAreaByIdVisitor;

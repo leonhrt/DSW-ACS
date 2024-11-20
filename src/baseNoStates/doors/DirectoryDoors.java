@@ -17,7 +17,6 @@ public final class DirectoryDoors {
   /**
    * Initializes the doors list with predefined door connections
    * between spaces in the system.
-   *
    * This method creates doors that connect various spaces such as
    * exterior, parking, stairs, halls, and rooms.
    */

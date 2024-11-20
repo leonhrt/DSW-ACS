@@ -17,7 +17,7 @@ public class RequestArea implements Request {
   private final String action;
   private final String areaId;
   private final LocalDateTime now;
-  private ArrayList<RequestReader> requests = new ArrayList<>();
+  private final ArrayList<RequestReader> requests = new ArrayList<>();
 
 
   public RequestArea(String credential, String action, LocalDateTime now, String areaId) {

@@ -1,10 +1,8 @@
 package baseNoStates.areas;
 
-import baseNoStates.doors.Door;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Optional;
 
 /**
  * The DirectoryAreas class manages the creation and retrieval of areas and doors.

@@ -7,7 +7,6 @@ import baseNoStates.areas.visitor.Visitor;
  * The Area class serves as the abstract component in the Composite design pattern.
  * It defines the common interface for all concrete objects (such as Partition and Space)
  * that can be part of a hierarchical structure.
- *
  * This class allows clients to interact with both individual objects and their compositions uniformly.
  */
 public abstract class Area {
