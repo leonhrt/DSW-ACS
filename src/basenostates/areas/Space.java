@@ -8,8 +8,8 @@ import java.util.ArrayList;
  * The Space class represents a leaf object in the Composite design pattern.
  * It does not contain any child objects, but it implements the common interface
  * defined by the Area class, allowing clients to treat it uniformly.
- * <p>
- * Spaces can contain doors and provide access to other areas.
+ *
+ * <p>Spaces can contain doors and provide access to other areas.
  */
 public class Space extends Area {
 
@@ -27,7 +27,7 @@ public class Space extends Area {
   }
 
   /**
-   * Executes the corresponding visitSpace method of the visitor
+   * Executes the corresponding visitSpace method of the visitor.
    *
    * @param visitor The visitor to accept and execute
    */
@@ -37,7 +37,9 @@ public class Space extends Area {
   }
 
   /**
-   * @return The list of the doors that give access to this space
+   * Getter of the doors.
+   *
+   * @return The list of the doors that give access to this space.
    */
   public ArrayList<Door> getDoors() {
     return doors;
@@ -54,5 +56,4 @@ public class Space extends Area {
       doors.add(door);
     }
   }
-
 }
