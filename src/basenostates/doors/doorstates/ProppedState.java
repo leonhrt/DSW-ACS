@@ -5,9 +5,15 @@ import basenostates.doors.Door;
 /**
  * The ProppedState class represents the state of a door when it is propped.
  *
- * This class is the implementation of the abstract class DoorState for the State Pattern
+ * <p>This class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class ProppedState extends DoorState {
+  /**
+   * Main constructor of the class, used to define the state of the door
+   * to the propped state.
+   *
+   * @param door The door which will have the LockedState.
+   */
   public ProppedState(Door door) {
     super(door);
     name = States.PROPPED;
@@ -22,7 +28,8 @@ public class ProppedState extends DoorState {
   }
 
   /**
-   * Notifies the user that te door is going to be closed, sets the door to closed and sets the new state (Locked).
+   * Notifies the user that te door is going to be closed,
+   * sets the door to closed and sets the new state (Locked).
    */
   @Override
   public void close() {

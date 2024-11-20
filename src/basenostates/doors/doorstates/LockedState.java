@@ -9,7 +9,8 @@ import basenostates.doors.Door;
  */
 public class LockedState extends DoorState {
   /**
-   * Main constructor of the class, used to define the state of the door.
+   * Main constructor of the class, used to define the state of the door
+   * to the locked state.
    *
    * @param door The door which will have the LockedState.
    */
