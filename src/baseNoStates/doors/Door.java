@@ -1,7 +1,7 @@
 package baseNoStates.doors;
 
 import baseNoStates.areas.Space;
-import baseNoStates.areas.Visitor;
+import baseNoStates.areas.visitor.Visitor;
 import baseNoStates.doors.doorstates.Actions;
 import baseNoStates.doors.doorstates.DoorState;
 import baseNoStates.doors.doorstates.UnlockedState;

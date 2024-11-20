@@ -1,5 +1,6 @@
 package baseNoStates.areas;
 
+import baseNoStates.areas.visitor.Visitor;
 import baseNoStates.doors.Door;
 
 import java.util.ArrayList;
@@ -32,6 +33,10 @@ public class Space extends Area {
   @Override
   public void accept(Visitor visitor) {
     visitor.visitSpace(this);
+  }
+
+  public ArrayList<Door> getDoors() {
+    return doors;
   }
 
   /**

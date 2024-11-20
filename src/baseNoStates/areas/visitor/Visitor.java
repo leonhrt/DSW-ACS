@@ -1,5 +1,7 @@
-package baseNoStates.areas;
+package baseNoStates.areas.visitor;
 
+import baseNoStates.areas.Partition;
+import baseNoStates.areas.Space;
 import baseNoStates.doors.Door;
 
 public interface Visitor {

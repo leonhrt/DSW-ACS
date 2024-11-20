@@ -1,11 +1,14 @@
-package baseNoStates.areas;
+package baseNoStates.areas.visitor;
 
+import baseNoStates.areas.Area;
+import baseNoStates.areas.Partition;
+import baseNoStates.areas.Space;
 import baseNoStates.doors.Door;
 
 import java.util.ArrayList;
 
 public class GetSpacesVisitor implements Visitor {
-  private ArrayList<Space> spaces = new ArrayList<>();
+  private final ArrayList<Space> spaces = new ArrayList<>();
 
   // Private constructor to force the static method
   private GetSpacesVisitor() {}
