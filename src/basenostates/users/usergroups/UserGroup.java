@@ -2,7 +2,6 @@ package basenostates.users.usergroups;
 
 import basenostates.areas.Space;
 import basenostates.users.User;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -10,7 +9,8 @@ import java.util.Set;
 
 /**
  * The UserGroup class represents a group of users with defined permissions.
- * Each group has a set of actions it can perform, spaces it can access, and a schedule that determines
+ * Each group has a set of actions it can perform,
+ * spaces it can access, and a schedule that determines
  * when those actions and accesses are allowed.
  */
 public class UserGroup {
