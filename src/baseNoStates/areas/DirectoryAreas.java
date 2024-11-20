@@ -11,8 +11,7 @@ import java.util.Optional;
  */
 public class DirectoryAreas {
   private static Area rootArea;
-  private static ArrayList<Door> allDoors = new ArrayList<>();
-  private static ArrayList<Area> allAreas = new ArrayList<>();
+  private static final ArrayList<Area> allAreas = new ArrayList<>();
 
 
   /**
@@ -23,6 +22,8 @@ public class DirectoryAreas {
   public static void makeAreas() {
     // partition of partitions
     Partition building = new Partition("building", null);
+
+    // define the building partition as the root area of the tree
     rootArea = building;
 
     // partitions of spaces
@@ -39,54 +40,12 @@ public class DirectoryAreas {
     Space corridor = new Space("corridor", floor1);
     Space it = new Space("it", floor1);
     Space stairs = new Space("stairs", building);
-    Space exterior = new Space("exterior", null);
+    Space exterior = new Space("exterior", building);
 
     allAreas.addAll(Arrays.asList(building, basement, ground_floor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
   }
 
   public static Area getRootArea() {
     return rootArea;
-  }
-
-  /**
-   * Finds an area by its ID in the list of all areas.
-   *
-   * @param id the ID of the area to find
-   * @return the area with the specified ID, or null if not found
-   */
-  public static Area findAreaById(String id) {
-    // we get a stream filtered by id, and we return the first, or if there isn't any, null
-    Optional<Area> area = allAreas.stream().filter(a -> a.getId().equals(id)).findFirst();
-    return area.orElse(null);
-  }
-
-  /**
-   * Finds a door by its ID in the list of all doors.
-   *
-   * @param id the ID of the door to find
-   * @return the door with the specified ID, or null if not found
-   */
-  public static Door findDoorById(String id) {
-    Optional<Door> door = allDoors.stream().filter(d -> d.getId().equals(id)).findFirst();
-    return door.orElse(null);
-  }
-
-  public static ArrayList<Door> getAllDoors() {
-    return allDoors;
-  }
-
-  public static ArrayList<Area> getAllAreas() {
-    return allAreas;
-  }
-
-  /**
-   * Adds a door to the list of all doors if it is not already present.
-   *
-   * @param door the door to be added
-   */
-  public static void addDoor(Door door) {
-    if (!allDoors.contains(door)) {
-      allDoors.add(door);
-    }
   }
 }

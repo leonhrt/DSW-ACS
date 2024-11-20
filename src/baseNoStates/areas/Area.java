@@ -1,10 +1,6 @@
 package baseNoStates.areas;
 
 import baseNoStates.areas.visitor.Visitor;
-import baseNoStates.doors.Door;
-
-import java.util.ArrayList;
-
 
 
 /**
@@ -16,38 +12,22 @@ import java.util.ArrayList;
  */
 public abstract class Area {
   protected String id;
-  protected Partition parentPartition;
 
 
   /**
    * Constructs an Area with the specified ID and parent partition.
    *
-   * @param id the unique identifier for the area
-   * @param parentPartition the partition containing this area
+   * @param id The unique identifier for the area
+   * @param parentPartition The partition containing this area
    */
   public Area(String id, Partition parentPartition) {
     this.id = id;
-    this.parentPartition = parentPartition;
+    if (parentPartition != null) parentPartition.addArea(this);
   }
 
   public abstract void accept(Visitor visitor);
 
-  /**
-   * Finds an area by its ID.
-   *
-   * @param id the ID of the area to find
-   * @return the area with the specified ID, or null if not found
-   */
-  public Area findAreaById(String id) {
-    return DirectoryAreas.findAreaById(id);
-  }
-
   public String getId() {
     return id;
   }
-
-  public abstract ArrayList<Space> getSpaces();
-
-  public abstract ArrayList<Door> getDoorsGivingAccess();
-
 }

@@ -3,7 +3,7 @@ package baseNoStates.requests;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import baseNoStates.doors.DirectoryDoors;
+import baseNoStates.areas.visitor.FindDoorByIdVisitor;
 import baseNoStates.doors.Door;
 import baseNoStates.users.DirectoryUsers;
 import baseNoStates.users.User;
@@ -69,7 +69,7 @@ public class RequestReader implements Request {
   // if authorized, perform the action.
   public void process() {
     User user = DirectoryUsers.findUserByCredential(credential);
-    Door door = DirectoryDoors.findDoorById(doorId);
+    Door door = FindDoorByIdVisitor.findDoorById(doorId);
     assert door != null : "door " + doorId + " not found";
     authorize(user, door);
     // this sets the boolean authorize attribute of the request

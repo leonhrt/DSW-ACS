@@ -1,7 +1,7 @@
 package baseNoStates.doors;
 
-import baseNoStates.areas.DirectoryAreas;
 import baseNoStates.areas.Space;
+import baseNoStates.areas.visitor.FindAreaByIdVisitor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,15 +23,15 @@ public final class DirectoryDoors {
    */
   public static void makeDoors() {
     //getting the spaces
-    Space exterior = (Space) DirectoryAreas.findAreaById("exterior");
-    Space parking = (Space) DirectoryAreas.findAreaById("parking");
-    Space stairs = (Space) DirectoryAreas.findAreaById("stairs");
-    Space hall = (Space) DirectoryAreas.findAreaById("hall");
-    Space room1 = (Space) DirectoryAreas.findAreaById("room1");
-    Space room2 = (Space) DirectoryAreas.findAreaById("room2");
-    Space corridor = (Space) DirectoryAreas.findAreaById("corridor");
-    Space room3 = (Space) DirectoryAreas.findAreaById("room3");
-    Space it = (Space) DirectoryAreas.findAreaById("it");
+    Space exterior = (Space) FindAreaByIdVisitor.findAreaById("exterior");
+    Space parking = (Space) FindAreaByIdVisitor.findAreaById("parking");
+    Space stairs = (Space) FindAreaByIdVisitor.findAreaById("stairs");
+    Space hall = (Space) FindAreaByIdVisitor.findAreaById("hall");
+    Space room1 = (Space) FindAreaByIdVisitor.findAreaById("room1");
+    Space room2 = (Space) FindAreaByIdVisitor.findAreaById("room2");
+    Space corridor = (Space) FindAreaByIdVisitor.findAreaById("corridor");
+    Space room3 = (Space) FindAreaByIdVisitor.findAreaById("room3");
+    Space it = (Space) FindAreaByIdVisitor.findAreaById("it");
 
     // basement
     Door d1 = new Door("D1", exterior, parking); // exterior, parking
@@ -49,22 +49,6 @@ public final class DirectoryDoors {
     Door d9 = new Door("D9", corridor, it); // corridor, IT
 
     allDoors = new ArrayList<>(Arrays.asList(d1, d2, d3, d4, d5, d6, d7, d8, d9));
-  }
-
-  /**
-   * Searches for a door in the list by its ID.
-   *
-   * @param id the ID of the door to search for
-   * @return the Door object if found, otherwise returns null and prints a message
-   */
-  public static Door findDoorById(String id) {
-    for (Door door : allDoors) {
-      if (door.getId().equals(id)) {
-        return door;
-      }
-    }
-    System.out.println("door with id " + id + " not found");
-    return null; // otherwise we get a Java error
   }
 
   /**

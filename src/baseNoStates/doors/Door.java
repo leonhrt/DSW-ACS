@@ -12,7 +12,7 @@ import org.json.JSONObject;
  * The Door class represents a physical door within a building.
  * A door can be in one of several states, these are represented by the DoorState class.
  * Also, the user can interact with the door with open and close actions if they have the right permissions.
- *
+ * <p>
  * This class is a part of the State Pattern implemented for the DoorStates
  */
 public class Door {
@@ -25,9 +25,9 @@ public class Door {
   /**
    * Door constructor that sets the door's ID, its state, and its spaces.
    *
-   * @param id         The unique identifier for the door.
-   * @param fromSpace  The space from which the door opens.
-   * @param toSpace    The space to which the door leads.
+   * @param id        The unique identifier for the door.
+   * @param fromSpace The space from which the door opens.
+   * @param toSpace   The space to which the door leads.
    */
   public Door(String id, Space fromSpace, Space toSpace) {
     this.id = id;
@@ -36,7 +36,7 @@ public class Door {
     this.fromSpace = fromSpace;
     this.toSpace = toSpace;
 
-    //we add this Door to Spaces fromSpace and toSpace
+    //add this Door to the spaces 'fromSpace' and 'toSpace'
     fromSpace.addDoor(this);
     toSpace.addDoor(this);
   }
@@ -88,13 +88,18 @@ public class Door {
     }
   }
 
-  public void accept(Visitor visitor){
+  /**
+   * Execute the visitDoor method of the corresponding visitor.
+   * @param visitor The visitor to accept and execute.
+   */
+  public void accept(Visitor visitor) {
     visitor.visitDoor(this);
   }
 
   /**
    * Sets the door state.
-   * @param state
+   *
+   * @param state The new state of the door.
    */
   public void setState(DoorState state) {
     this.state = state;

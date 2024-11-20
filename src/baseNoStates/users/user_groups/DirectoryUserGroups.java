@@ -3,6 +3,8 @@ package baseNoStates.users.user_groups;
 import baseNoStates.areas.Area;
 import baseNoStates.areas.DirectoryAreas;
 import baseNoStates.areas.Space;
+import baseNoStates.areas.visitor.FindAreaByIdVisitor;
+import baseNoStates.areas.visitor.GetSpacesVisitor;
 import baseNoStates.doors.doorstates.Actions;
 
 import java.time.DayOfWeek;
@@ -18,7 +20,7 @@ public class DirectoryUserGroups {
 
   /**
    * Creates and initializes predefined user groups in the system.
-   *
+   * <p>
    * The predefined groups include:
    * Administrator: Full access to all actions, spaces, and at any time.
    * Manager: Access to all actions and spaces with limited time constraints.
@@ -26,16 +28,8 @@ public class DirectoryUserGroups {
    * Blank: A placeholder group with no permissions.
    */
   public static void makeUserGroups() {
-    // All the available areas of the ACS
-    ArrayList<Area> availableAreas = DirectoryAreas.getAllAreas();
-
-    // All the spaces of the available areas
-    ArrayList<Space> availableSpaces = new ArrayList<>();
-    for (Area area : availableAreas) {
-      if (area instanceof Space) {
-        availableSpaces.add((Space) area);
-      }
-    }
+    // All the available spaces of the ACS
+    ArrayList<Space> availableSpaces = GetSpacesVisitor.getSpaces(DirectoryAreas.getRootArea());
 
     // All the actions available
     Set<String> allActions = new HashSet<>(List.of(
@@ -86,7 +80,7 @@ public class DirectoryUserGroups {
 
     // Employee: Can access all the spaces but the parking
     ArrayList<Space> employeeSpaces = new ArrayList<>(availableSpaces);
-    employeeSpaces.remove((Space) DirectoryAreas.findAreaById("parking"));
+    employeeSpaces.remove((Space) FindAreaByIdVisitor.findAreaById("parking"));
 
     // Employee: The schedule.
     // This group has access from September 1st 2024 to March 1st 2025.
