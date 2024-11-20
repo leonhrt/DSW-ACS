@@ -22,9 +22,11 @@ public class FindAreaByIdVisitor implements Visitor {
   }
 
   /**
-   * This static methods ensures that a single instance of the visitor is not executed more than once, by creating an
+   * This static methods ensures that a single instance of the visitor
+   * is not executed more than once, by creating an
    * instance and returning the desired value at the same method.
    * It starts the recursive iteration to find the area by the id from the root area of the tree.
+   *
    * @param id The id of the area to retrieve.
    * @return The area corresponding to the id.
    */
@@ -36,9 +38,12 @@ public class FindAreaByIdVisitor implements Visitor {
   }
 
   /**
-   * A partition can contain other partition or spaces, so if the partition corresponds to the id, area is the partition
-   * and the recursive iteration ends, otherwise it iterates recursively its sub areas until the corresponding area
+   * A partition can contain other partition or spaces,
+   * so if the partition corresponds to the id, area is the partition
+   * and the recursive iteration ends,
+   * otherwise it iterates recursively its sub areas until the corresponding area
    * is found.
+   *
    * @param partition The partition to check its id.
    */
   @Override
@@ -56,16 +61,24 @@ public class FindAreaByIdVisitor implements Visitor {
   }
 
   /**
-   * A space cannot contain any other sub areas, so if the id corresponds to the space, area is modified, otherwise do nothing.
+   * A space cannot contain any other sub areas,
+   * so if the id corresponds to the space, area is modified,
+   * otherwise do nothing.
+   *
    * @param space The space to check its id.
    */
   @Override
   public void visitSpace(Space space) {
-    if(space.getId().equals(areaId)) {
+    if (space.getId().equals(areaId)) {
       area = space;
     }
   }
 
+  /**
+   * Empty method, as this visitor won't be using this method.
+   *
+   * @param door Ignored.
+   */
   @Override
   public void visitDoor(Door door) {
 
