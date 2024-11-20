@@ -5,11 +5,11 @@ import basenostates.areas.DirectoryAreas;
 import basenostates.areas.Partition;
 import basenostates.areas.Space;
 import basenostates.doors.Door;
-
 import java.util.ArrayList;
 
 /**
- * This visitor class accesses to the root area and look in all its tree for the specified door until it finds it,
+ * This visitor class accesses to the root area and look in all its tree
+ * for the specified door until it finds it,
  * or returns null if it doesn't exist.
  */
 public class FindDoorByIdVisitor implements Visitor {
@@ -22,8 +22,9 @@ public class FindDoorByIdVisitor implements Visitor {
   }
 
   /**
-   * This static methods ensures that a single instance of the visitor is not executed more than once, by creating an
-   * instance and returning the desired value at the same method.
+   * This static methods ensures that a single instance of the visitor
+   * is not executed more than once, by creating an instance
+   * and returning the desired value at the same method.
    * It starts the recursive iteration to find the door by the id from the root area of the tree.
    *
    * @param id The id of the door to retrieve.
@@ -37,8 +38,8 @@ public class FindDoorByIdVisitor implements Visitor {
   }
 
   /**
-   * A partition can contain other partition or spaces, so it iterates recursively its sub areas until the corresponding door
-   * is found.
+   * A partition can contain other partition or spaces,
+   * so it iterates recursively its sub areas until the corresponding door is found.
    *
    * @param partition The partition to check its id.
    */
@@ -55,6 +56,7 @@ public class FindDoorByIdVisitor implements Visitor {
 
   /**
    * A space can contain multiple doors, so it iterates on them to find the corresponding one.
+   *
    * @param space The space to check its id.
    */
   @Override
@@ -68,12 +70,14 @@ public class FindDoorByIdVisitor implements Visitor {
   }
 
   /**
-   * If the door corresponds to the specified id, the attribute door is modified and recursive iteration stops, else do nothing.
-   * @param door
+   * If the door corresponds to the specified id,
+   * the attribute door is modified and recursive iteration stops, else do nothing.
+   *
+   * @param door The door to modify.
    */
   @Override
   public void visitDoor(Door door) {
-    if(door.getId().equals(doorId)) {
+    if (door.getId().equals(doorId)) {
       this.door = door;
     }
   }
