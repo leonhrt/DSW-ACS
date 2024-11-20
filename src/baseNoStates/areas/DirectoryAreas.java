@@ -9,7 +9,6 @@ import java.util.Arrays;
  */
 public class DirectoryAreas {
   private static Area rootArea;
-  private static final ArrayList<Area> allAreas = new ArrayList<>();
 
 
   /**
@@ -39,8 +38,6 @@ public class DirectoryAreas {
     Space it = new Space("it", floor1);
     Space stairs = new Space("stairs", building);
     Space exterior = new Space("exterior", building);
-
-    allAreas.addAll(Arrays.asList(building, basement, ground_floor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
   }
 
   public static Area getRootArea() {

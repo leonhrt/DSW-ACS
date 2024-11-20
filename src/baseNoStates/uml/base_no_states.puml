@@ -195,7 +195,6 @@ abstract Class Area{
 
 class DirectoryAreas{
 -rootArea : Area
--allAreas : Area[]
 +makeAreas()
 }
 
