@@ -1,5 +1,8 @@
 package baseNoStates.doors.doorstates;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import baseNoStates.doors.Door;
 
 /**
@@ -8,6 +11,9 @@ import baseNoStates.doors.Door;
  * This class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class ProppedState extends DoorState {
+
+  private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
+
   public ProppedState(Door door) {
     super(door);
     name = States.PROPPED;
@@ -18,7 +24,7 @@ public class ProppedState extends DoorState {
    */
   @Override
   public void open() {
-    System.out.println("I mean, the door is open, but propped");
+    milestone1.warn("I mean, the door is open, but propped");
   }
 
   /**
@@ -26,7 +32,7 @@ public class ProppedState extends DoorState {
    */
   @Override
   public void close() {
-    System.out.println("Closing the door...");
+    milestone1.info("Closing the door...");
     door.setState(new LockedState(door));
     door.setClosed(true);
   }
@@ -36,7 +42,7 @@ public class ProppedState extends DoorState {
    */
   @Override
   public void lock() {
-    System.out.println("Can't lock the door because it's propped");
+    milestone1.warn("Can't lock the door because it's propped");
   }
 
   /**
@@ -44,7 +50,7 @@ public class ProppedState extends DoorState {
    */
   @Override
   public void unlock() {
-    System.out.println("It's propped right now, can't unlock");
+    milestone1.warn("It's propped right now, can't unlock");
   }
 
   /**
@@ -52,6 +58,6 @@ public class ProppedState extends DoorState {
    */
   @Override
   public void unlockShortly() {
-    System.out.println("Can't unlock shortly because it's propped");
+    milestone1.warn("Can't unlock shortly because it's propped");
   }
 }

@@ -1,5 +1,8 @@
 package baseNoStates.doors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import baseNoStates.areas.Space;
 import baseNoStates.areas.visitor.Visitor;
 import baseNoStates.doors.doorstates.Actions;
@@ -21,6 +24,8 @@ public class Door {
   private DoorState state;
   private final Space fromSpace;
   private final Space toSpace;
+
+  private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
 
   /**
    * Door constructor that sets the door's ID, its state, and its spaces.
@@ -54,7 +59,7 @@ public class Door {
       String action = request.getAction();
       doAction(action);
     } else {
-      System.out.println("not authorized");
+      milestone1.warn("not authorized");
     }
     request.setDoorStateName(getStateName());
   }

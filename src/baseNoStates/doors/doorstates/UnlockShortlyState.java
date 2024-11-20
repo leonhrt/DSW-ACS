@@ -1,5 +1,8 @@
 package baseNoStates.doors.doorstates;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import baseNoStates.doors.Door;
 
 import java.time.LocalTime;
@@ -20,6 +23,8 @@ public class UnlockShortlyState extends DoorState implements Observer {
   private LocalTime clockStartTime; // The moment when the door was unlocked shortly
   private Clock clock;              // The clock used to track the time
   private final int WAIT_TIME = 10; // The time in seconds to wait before unlocking the door
+
+  private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
 
   /**
    * Constructs a new UnlockShortlyState with the specified door.
@@ -43,10 +48,10 @@ public class UnlockShortlyState extends DoorState implements Observer {
   @Override
   public void open() {
     if (door.isClosed()) {
-      System.out.println("Opening the door...");
+      milestone1.info("Opening the door...");
       door.setClosed(false);
     } else {
-      System.out.println("The door is already open");
+      milestone1.warn("The door is already open");
     }
   }
 
@@ -57,9 +62,9 @@ public class UnlockShortlyState extends DoorState implements Observer {
   @Override
   public void close() {
     if (door.isClosed()) {
-      System.out.println("The door is already closed");
+      milestone1.warn("The door is already closed");
     } else {
-      System.out.println("Closing the door...");
+      milestone1.info("Closing the door...");
       door.setClosed(true);
     }
   }
@@ -69,7 +74,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
    */
   @Override
   public void lock() {
-    System.out.println("The door will be locked in 10 seconds automatically, be patient");
+    milestone1.info("The door will be locked in 10 seconds automatically, be patient");
   }
 
   /**
@@ -77,7 +82,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
    */
   @Override
   public void unlock() {
-    System.out.println("The door is unlocked temporarily, so can't unlock");
+    milestone1.warn("The door is unlocked temporarily, so can't unlock");
   }
 
   /**
@@ -85,7 +90,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
    */
   @Override
   public void unlockShortly() {
-    System.out.println("The door is already in unlock shortly state");
+    milestone1.warn("The door is already in unlock shortly state");
   }
 
   /**
@@ -121,7 +126,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
       state = States.PROPPED;
     }
 
-    System.out.println("The door " + door.getId() + " is now in " + state + " state");
+    milestone1.debug("The door " + door.getId() + " is now in " + state + " state");
 
     // Delete the observer from the list of observers, since it is no longer needed.
     clock.deleteObserver(this);

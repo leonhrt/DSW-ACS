@@ -2,12 +2,18 @@ package baseNoStates.doors.doorstates;
 
 import baseNoStates.doors.Door;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 /**
  * The UnlockedState class represents the state of a door when it is unlocked.
  *
  * This class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class UnlockedState extends DoorState {
+
+  private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
+  //private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
   public UnlockedState(Door door) {
     super(door);
     name = States.UNLOCKED;
@@ -21,10 +27,10 @@ public class UnlockedState extends DoorState {
   @Override
   public void open() {
     if (door.isClosed()) {        //Check if the door is closed so it can be opened
-      System.out.println("Opening the door...");
+      milestone1.info("Opening the door...");
       door.setClosed(false);
     } else {
-      System.out.println("The door is already open");
+      milestone1.warn("The door is already open");
     }
   }
 
@@ -36,10 +42,10 @@ public class UnlockedState extends DoorState {
   @Override
   public void close() {
     if (!door.isClosed()) {       //Check if the door is open so it can be closed
-      System.out.println("Closing the door...");
+      milestone1.info("Closing the door...");
       door.setClosed(true);
     } else {
-      System.out.println("The door is already closed");
+      milestone1.warn("The door is already closed");
     }
   }
 
@@ -50,9 +56,9 @@ public class UnlockedState extends DoorState {
   @Override
   public void lock() {
     if (!door.isClosed()) {       //Door cannot be locked if it's open
-      System.out.println("Can't lock the door because it's open");
+      milestone1.warn ("Can't lock the door because it's open");
     } else {
-      System.out.println("The door is already locked");
+      milestone1.info("Locking the door");
       door.setState(new LockedState(door));
     }
   }
@@ -62,14 +68,14 @@ public class UnlockedState extends DoorState {
    */
   @Override
   public void unlock() {
-    System.out.println("The door is already unlocked");
+    milestone1.warn("The door is already unlocked");
   }
 
   /**
-   * Notifies the user that a unlocked door cannot be unlocked shortly.
+   * Notifies the user that an unlocked door cannot be unlocked shortly.
    */
   @Override
   public void unlockShortly() {
-    System.out.println("The door is already unlocked, can't unlock shortly");
+    milestone1.warn("The door is already unlocked, can't unlock shortly");
   }
 }
