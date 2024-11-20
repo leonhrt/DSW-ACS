@@ -9,17 +9,21 @@ import java.util.TimerTask;
  * The Clock class represents a singleton clock that provides the current date and time.
  * It extends an Observable, meaning it can notify observers whenever the time updates.
  *
- * This clock runs at a regular interval, updating the current time and notifying its observers.
+ * <p>This clock runs at a regular interval, updating the current time and notifying its observers.
  * It can be started and stopped, and there is only one instance of the clock available throughout
  * the application (Singleton pattern).
  *
- * It also is used in the Observer pattern as the Observable class.
+ * <p>It also is used in the Observer pattern as the Observable class.
  */
 public class Clock extends Observable {
-  private LocalDateTime date;                 // Variable used to store the current date and time
-  private Timer timer;                        // Timer used to schedule the updates
-  private int period;                         // Interval between updates in milliseconds
-  private static Clock uniqueInstance = null; // The unique instance of the clock (Singleton pattern).
+  // Variable used to store the current date and time
+  private LocalDateTime date;
+  // Timer used to schedule the updates
+  private Timer timer;
+  // Interval between updates in milliseconds
+  private int period;
+  // The unique instance of the clock (Singleton pattern).
+  private static Clock uniqueInstance = null;
 
   /**
    * Private constructor to avoid instantiation from outside the class (Singleton pattern).
@@ -43,7 +47,7 @@ public class Clock extends Observable {
         System.out.println("run() executed at " + date);
       }
     };
-    timer.scheduleAtFixedRate(repeatedTask, 0 , 1000L * period);
+    timer.scheduleAtFixedRate(repeatedTask, 0, 1000L * period);
   }
 
   /**
@@ -55,7 +59,8 @@ public class Clock extends Observable {
 
   /**
    * Returns the unique instance of the Clock.
-   * If no instance exists, a new one is created. This ensures that there is only one clock in the system.
+   * If no instance exists, a new one is created.
+   * This ensures that there is only one clock in the system.
    *
    * @return The singleton instance of the Clock
    */
