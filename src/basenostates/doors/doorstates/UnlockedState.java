@@ -5,9 +5,14 @@ import basenostates.doors.Door;
 /**
  * The UnlockedState class represents the state of a door when it is unlocked.
  *
- * This class is the implementation of the abstract class DoorState for the State Pattern
+ * <p>This class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class UnlockedState extends DoorState {
+  /**
+   * Constructs a new DoorState with the specified door.
+   *
+   * @param door The door that this state is associated with
+   */
   public UnlockedState(Door door) {
     super(door);
     name = States.UNLOCKED;
@@ -45,7 +50,7 @@ public class UnlockedState extends DoorState {
 
   /**
    * As the actual state is unlocked, we set the door's state to
-   * locked with a new LockedState
+   * locked with a new LockedState.
    */
   @Override
   public void lock() {
