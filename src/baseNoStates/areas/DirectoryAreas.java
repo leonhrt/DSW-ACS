@@ -1,9 +1,6 @@
 package baseNoStates.areas;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 /**
  * The DirectoryAreas class manages the creation and retrieval of areas and doors.
  */
@@ -29,15 +26,15 @@ public class DirectoryAreas {
     Partition floor1 = new Partition("floor1", building);
 
     // spaces
-    Space parking = new Space("parking", basement);
-    Space hall = new Space("hall", ground_floor);
-    Space room1 = new Space("room1", ground_floor);
-    Space room2 = new Space("room2", ground_floor);
-    Space room3 = new Space("room3", floor1);
-    Space corridor = new Space("corridor", floor1);
-    Space it = new Space("it", floor1);
-    Space stairs = new Space("stairs", building);
-    Space exterior = new Space("exterior", building);
+    new Space("parking", basement);
+    new Space("hall", ground_floor);
+    new Space("room1", ground_floor);
+    new Space("room2", ground_floor);
+    new Space("room3", floor1);
+    new Space("corridor", floor1);
+    new Space("it", floor1);
+    new Space("stairs", building);
+    new Space("exterior", building);
   }
 
   public static Area getRootArea() {
