@@ -7,6 +7,9 @@ import baseNoStates.doors.Door;
 
 import java.util.ArrayList;
 
+/**
+ * This visitor class accesses the specified area in order to get a list of doors that provide access from outside this area.
+ */
 public class GetDoorsGivingAccessVisitor implements Visitor {
   private final ArrayList<Door> doors = new ArrayList<>();
 

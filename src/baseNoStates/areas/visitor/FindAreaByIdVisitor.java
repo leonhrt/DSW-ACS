@@ -8,6 +8,10 @@ import baseNoStates.doors.Door;
 
 import java.util.ArrayList;
 
+/**
+ * This visitor class accesses to the root area and look in all its tree for the specified area until it finds it,
+ * or returns null if it doesn't exist.
+ */
 public class FindAreaByIdVisitor implements Visitor {
   private Area area;
   private final String areaId;

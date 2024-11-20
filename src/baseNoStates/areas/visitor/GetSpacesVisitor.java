@@ -7,6 +7,9 @@ import baseNoStates.doors.Door;
 
 import java.util.ArrayList;
 
+/**
+ * This visitor class is made to access the specified area and retrieve a list of the spaces contained within the specified area and its sub-areas.
+ */
 public class GetSpacesVisitor implements Visitor {
   private final ArrayList<Space> spaces = new ArrayList<>();
 
