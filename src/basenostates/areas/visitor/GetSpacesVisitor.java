@@ -4,11 +4,11 @@ import basenostates.areas.Area;
 import basenostates.areas.Partition;
 import basenostates.areas.Space;
 import basenostates.doors.Door;
-
 import java.util.ArrayList;
 
 /**
- * This visitor class is made to access the specified area and retrieve a list of the spaces contained within the specified area and its sub-areas.
+ * This visitor class is made to access the specified area
+ * and retrieve a list of the spaces contained within the specified area and its sub-areas.
  */
 public class GetSpacesVisitor implements Visitor {
   private final ArrayList<Space> spaces = new ArrayList<>();
@@ -17,9 +17,13 @@ public class GetSpacesVisitor implements Visitor {
   private GetSpacesVisitor() {}
 
   /**
-   * This static method solves the problem of getting wrong spaces if the client reuses an already executed GetSpacesVisitor instance.
-   * When reusing a GetSpaceVisitor instance, new spaces are added to the list of spaces previously gotten.
-   * This method generates a new instance every time is called, so the client isn't able to reuse any instance.
+   * This static method solves the problem of getting wrong spaces
+   * if the client reuses an already executed GetSpacesVisitor instance.
+   * When reusing a GetSpaceVisitor instance,
+   * new spaces are added to the list of spaces previously gotten.
+   * This method generates a new instance every time is called,
+   * so the client isn't able to reuse any instance.
+   *
    * @param area The area to get spaces from.
    * @return The list of spaces included in the area.
    */
@@ -30,7 +34,8 @@ public class GetSpacesVisitor implements Visitor {
   }
 
   /**
-   * Recursively get the Space items from the current partition and sub-partitions
+   * Recursively get the Space items from the current partition and sub-partitions.
+   *
    * @param partition The partition to get its spaces
    */
   @Override
@@ -41,7 +46,8 @@ public class GetSpacesVisitor implements Visitor {
   }
 
   /**
-   * Adds the space to the spaces list
+   * Adds the space to the spaces list.
+   *
    * @param space The space to add to the list
    */
   @Override
@@ -49,6 +55,11 @@ public class GetSpacesVisitor implements Visitor {
     spaces.add(space);
   }
 
+  /**
+   * Empty method, as this visitor won't be using this method.
+   *
+   * @param door Ignored.
+   */
   @Override
   public void visitDoor(Door door) {
 
