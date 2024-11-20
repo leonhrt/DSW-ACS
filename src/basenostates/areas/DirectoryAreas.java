@@ -22,15 +22,15 @@ public class DirectoryAreas {
     rootArea = property;
 
     // partitions of spaces
-    Partition basement = new Partition("basement", building);
-    Partition ground_floor = new Partition("ground_floor", building);
-    Partition floor1 = new Partition("floor1", building);
+    final Partition basement = new Partition("basement", building);
+    final Partition groundFloor = new Partition("ground_floor", building);
+    final Partition floor1 = new Partition("floor1", building);
 
     // spaces
     new Space("parking", basement);
-    new Space("hall", ground_floor);
-    new Space("room1", ground_floor);
-    new Space("room2", ground_floor);
+    new Space("hall", groundFloor);
+    new Space("room1", groundFloor);
+    new Space("room2", groundFloor);
     new Space("room3", floor1);
     new Space("corridor", floor1);
     new Space("it", floor1);
