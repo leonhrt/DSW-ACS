@@ -2,15 +2,21 @@ package basenostates.requests;
 
 import basenostates.doors.DirectoryDoors;
 import basenostates.doors.Door;
-
 import java.util.ArrayList;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * Class that refresh a request sent by the user.
+ */
 public class RequestRefresh implements Request {
   private final ArrayList<JSONObject> jsonsDoors = new ArrayList<>();
 
+  /**
+   * Formats the answer to JSON format.
+   *
+   * @return The formatted answer as a JSONObject.
+   */
   @Override
   public JSONObject answerToJson() {
     JSONObject json = new JSONObject();
@@ -19,6 +25,11 @@ public class RequestRefresh implements Request {
     return json;
   }
 
+  /**
+   * Overrides the toString method of java for objects.
+   *
+   * @return The String to display.
+   */
   @Override
   public String toString() {
     return "RequestRefresh{" + jsonsDoors + "}";
@@ -30,6 +41,10 @@ public class RequestRefresh implements Request {
   // Also, to quickly test if the partition requests sent by the client app in Flutter
   // works or not, retrieves the state of all the doors so that the simulator can
   // repaint the readers
+
+  /**
+   * Re-paint the state of all doors, and if it's open or closed.
+   */
   public void process() {
     for (Door door : DirectoryDoors.getAllDoors()) {
       jsonsDoors.add(door.toJson());
