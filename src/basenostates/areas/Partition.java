@@ -1,14 +1,13 @@
 package basenostates.areas;
 
 import basenostates.areas.visitor.Visitor;
-
 import java.util.ArrayList;
 
 /**
  * The Partition class represents a composite object in the Composite design pattern.
  * It can contain other Area objects, such as Space instances or other Partition instances.
- * <p>
- * This allows for the creation of a tree structure where partitions can contain multiple areas,
+ *
+ * <p>This allows for the creation of a tree structure where partitions can contain multiple areas,
  * enabling hierarchical organization and manipulation of the entire structure.
  */
 public class Partition extends Area {
@@ -19,15 +18,16 @@ public class Partition extends Area {
    * Constructs a Partition with the specified ID and parent partition.
    * This constructor adds the partition to its parent's area list, if it has one.
    *
-   * @param id              the unique identifier for the partition
-   * @param parentPartition the parent partition containing this partition, or null if it doesn't have one.
+   * @param id              The unique identifier for the partition
+   * @param parentPartition The parent partition containing this partition,
+   *                        or null if it doesn't have one.
    */
   public Partition(String id, Partition parentPartition) {
     super(id, parentPartition);
   }
 
   /**
-   * Executes the corresponding visitPartition method of the visitor
+   * Executes the corresponding visitPartition method of the visitor.
    *
    * @param visitor The visitor to accept and execute
    */
@@ -37,6 +37,8 @@ public class Partition extends Area {
   }
 
   /**
+   * Getter of the areas.
+   *
    * @return The areas list, which contains the areas within this partition.
    */
   public ArrayList<Area> getAreas() {
