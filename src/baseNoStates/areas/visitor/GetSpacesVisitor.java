@@ -26,14 +26,21 @@ public class GetSpacesVisitor implements Visitor {
     return visitor.spaces;
   }
 
+  /**
+   * Recursively get the Space items from the current partition and sub-partitions
+   * @param partition The partition to get its spaces
+   */
   @Override
   public void visitPartition(Partition partition) {
-    // Recursively get the Space items from the current Partition and sub Partitions
     for (Area area : partition.getAreas()) {
       area.accept(this);
     }
   }
 
+  /**
+   * Adds the space to the spaces list
+   * @param space The space to add to the list
+   */
   @Override
   public void visitSpace(Space space) {
     spaces.add(space);

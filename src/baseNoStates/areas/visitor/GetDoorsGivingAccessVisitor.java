@@ -49,7 +49,7 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
   }
 
   /**
-   * When retrieving the doors that give access to a specific space, the answer is all it's doors.
+   * When retrieving the doors that give access to a specific space, the output is all it's doors.
    * @param space The space to retrieve the doors giving access to it.
    */
   @Override
