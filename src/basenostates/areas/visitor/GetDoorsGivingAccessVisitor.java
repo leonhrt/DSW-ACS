@@ -4,11 +4,11 @@ import basenostates.areas.Area;
 import basenostates.areas.Partition;
 import basenostates.areas.Space;
 import basenostates.doors.Door;
-
 import java.util.ArrayList;
 
 /**
- * This visitor class accesses the specified area in order to get a list of doors that provide access from outside this area.
+ * This visitor class accesses the specified area in order to get a list of doors
+ * that provide access from outside this area.
  */
 public class GetDoorsGivingAccessVisitor implements Visitor {
   private final ArrayList<Door> doors = new ArrayList<>();
@@ -16,21 +16,26 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
   private GetDoorsGivingAccessVisitor() {}
 
   /**
-   * This static methods ensures that a single instance of the visitor is not executed more than once, by creating an
-   * instance and returning the desired value at the same method.
+   * This static methods ensures that a single instance of the visitor
+   * is not executed more than once, by creating an instance
+   * and returning the desired value at the same method.
+   *
    * @param area The area to retrieve all its giving access doors.
    * @return A list of all doors that give access to that area.
    */
-  public static ArrayList<Door> getDoorsGivingAccess(Area area){
+  public static ArrayList<Door> getDoorsGivingAccess(Area area) {
     GetDoorsGivingAccessVisitor visitor = new GetDoorsGivingAccessVisitor();
     area.accept(visitor);
     return visitor.doors;
   }
 
   /**
-   * Get all spaces within the partition using the getSpacesVisitor and then get all the doors within the spaces.
-   * Finally, the spaces retrieved using getSpaceVisitor are used to check if each door is giving access to the
+   * Get all spaces within the partition using the getSpacesVisitor
+   * and then get all the doors within the spaces.
+   * Finally, the spaces retrieved using getSpaceVisitor are used
+   * to check if each door is giving access to the
    * partition, or it's just connecting two spaces both contained within the partition.
+   *
    * @param partition The partition to retrieve all the giving access doors.
    */
   @Override
@@ -42,10 +47,12 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
       space.accept(this);
     }
 
-    // Once all doors are retrieved, remove the ones that connect two spaces both contained within the partition.
+    // Once all doors are retrieved,
+    // remove the ones that connect two spaces both contained within the partition.
     // So we only keep the ones that really give access to the partition.
-    for(int i = doors.size() - 1; i >= 0; i--){
-      if(spaces.contains(doors.get(i).getFromSpace()) && spaces.contains(doors.get(i).getToSpace())){
+    for (int i = doors.size() - 1; i >= 0; i--) {
+      if (spaces.contains(doors.get(i).getFromSpace())
+              && spaces.contains(doors.get(i).getToSpace())) {
         doors.remove(i);
       }
     }
@@ -53,6 +60,7 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
 
   /**
    * When retrieving the doors that give access to a specific space, the output is all it's doors.
+   *
    * @param space The space to retrieve the doors giving access to it.
    */
   @Override
@@ -65,6 +73,7 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
 
   /**
    * Add the door to the doors list.
+   *
    * @param door The door to add to the list.
    */
   @Override
