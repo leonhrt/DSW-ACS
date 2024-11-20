@@ -2,7 +2,6 @@ package basenostates.users;
 
 import basenostates.users.usergroups.DirectoryUserGroups;
 import basenostates.users.usergroups.UserGroup;
-
 import java.util.ArrayList;
 
 /**
@@ -16,7 +15,7 @@ public final class DirectoryUsers {
    * Initializes the users list with predefined user accounts
    * and their associated groups.
    *
-   * This method creates user accounts with specific groups and
+   * <p>This method creates user accounts with specific groups and
    * privileges. The user groups include Administrator, Manager, Employee,
    * and Blank, each with defined access rights.
    */
