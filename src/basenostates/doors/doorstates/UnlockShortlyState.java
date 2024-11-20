@@ -1,7 +1,6 @@
 package basenostates.doors.doorstates;
 
 import basenostates.doors.Door;
-
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Observable;
@@ -13,13 +12,12 @@ import java.util.Observer;
  * It extends 'DoorState' and implements the 'Observer'
  * interface to receive updates from the clock.
  *
- * This class is a part of the Observer Pattern.
+ * <p>This class is a part of the Observer Pattern.
  * Also, this class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class UnlockShortlyState extends DoorState implements Observer {
   private LocalTime clockStartTime; // The moment when the door was unlocked shortly
   private Clock clock;              // The clock used to track the time
-  private final int WAIT_TIME = 10; // The time in seconds to wait before unlocking the door
 
   /**
    * Constructs a new UnlockShortlyState with the specified door.
@@ -106,7 +104,9 @@ public class UnlockShortlyState extends DoorState implements Observer {
     int elapsedTime = (int) clockStartTime.until(currentTime, ChronoUnit.SECONDS);
 
     // Check if the specified time has elapsed
-    if (elapsedTime < WAIT_TIME) {
+    // The time in seconds to wait before unlocking the door
+    int waitTime = 10;
+    if (elapsedTime < waitTime) {
       return;
     }
 
