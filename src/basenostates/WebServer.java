@@ -1,10 +1,9 @@
 package basenostates;
 
 import basenostates.requests.Request;
+import basenostates.requests.RequestArea;
 import basenostates.requests.RequestReader;
 import basenostates.requests.RequestRefresh;
-import basenostates.requests.RequestArea;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -18,10 +17,21 @@ import java.util.StringTokenizer;
 // Based on
 // https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java
 // http://www.jcgonzalez.com/java-socket-mini-server-http-example
+
+/**
+ * Class that connects the front-end (HTML + javascript) with the back-end (Java).
+ */
 public class WebServer {
   private static final int PORT = 8080; // port to listen connection
-  private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
+  private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(
+      "yyyy-MM-dd'T'HH:mm");
 
+  /**
+   * Constructor that create a WebServer instance initiating a ServerSocket to allow
+   * connection.
+   * Tries to connect, if successful, connects and notifies the user, if not, notifies the user
+   * about the error.
+   */
   public WebServer() {
     try {
       ServerSocket serverConnect = new ServerSocket(PORT);
