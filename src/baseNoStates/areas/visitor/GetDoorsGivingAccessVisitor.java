@@ -42,10 +42,12 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
       space.accept(this);
     }
 
-    // Once all doors are retrieved, remove the ones that connect two spaces both contained within the partition. So we
-    // only keep the ones that really give access to the partition.
+    // Once all doors are retrieved, remove the ones that connect two spaces both contained within the partition.
+    // So we only keep the ones that really give access to the partition. Also keep the exterior area so its doors are
+    // always detected as doors that give access from outside.
     for(int i = doors.size() - 1; i >= 0; i--){
-      if(spaces.contains(doors.get(i).getFromSpace()) && spaces.contains(doors.get(i).getToSpace())){
+      if(spaces.contains(doors.get(i).getFromSpace()) && spaces.contains(doors.get(i).getToSpace())
+          && !doors.get(i).getFromSpace().getId().equals("exterior") && !doors.get(i).getToSpace().getId().equals("exterior")){
         doors.remove(i);
       }
     }
