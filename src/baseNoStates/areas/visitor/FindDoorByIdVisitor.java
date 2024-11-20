@@ -46,7 +46,7 @@ public class FindDoorByIdVisitor implements Visitor {
   public void visitPartition(Partition partition) {
     int i = 0;
     ArrayList<Area> areas = partition.getAreas();
-    while (door != null && i < areas.size()) {
+    while (door == null && i < areas.size()) {
       areas.get(i).accept(this);
       i++;
 
@@ -61,7 +61,7 @@ public class FindDoorByIdVisitor implements Visitor {
   public void visitSpace(Space space) {
     int i = 0;
     ArrayList<Door> doors = space.getDoors();
-    while (door != null && i < doors.size()) {
+    while (door == null && i < doors.size()) {
       doors.get(i).accept(this);
       i++;
     }

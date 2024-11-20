@@ -48,7 +48,7 @@ public class FindAreaByIdVisitor implements Visitor {
     } else {
       int i = 0;
       ArrayList<Area> areas = partition.getAreas();
-      while (area != null && i < areas.size()) {
+      while (area == null && i < areas.size()) {
         areas.get(i).accept(this);
         i++;
       }
