@@ -15,10 +15,11 @@ public class DirectoryAreas {
    */
   public static void makeAreas() {
     // partition of partitions
-    Partition building = new Partition("building", null);
+    Partition property = new Partition("property", null);
+    Partition building = new Partition("building", property);
 
-    // define the building partition as the root area of the tree
-    rootArea = building;
+    // define the property partition as the root area of the tree
+    rootArea = property;
 
     // partitions of spaces
     Partition basement = new Partition("basement", building);
@@ -34,7 +35,7 @@ public class DirectoryAreas {
     new Space("corridor", floor1);
     new Space("it", floor1);
     new Space("stairs", building);
-    new Space("exterior", building);
+    new Space("exterior", property);
   }
 
   public static Area getRootArea() {
