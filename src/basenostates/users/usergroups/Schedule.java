@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * The Schedule class represents a schedule for a user group that defines the time periods where the group
- * is allowed to perform actions.
+ * The Schedule class represents a schedule for a user group
+ * that defines the time periods where the group is allowed to perform actions.
  * The periods are defined by a start date, end date, start time, end time, and a set of weekdays.
  */
 public class Schedule {
@@ -53,9 +53,9 @@ public class Schedule {
    * @return True if the provided date and time are allowed by the schedule, false otherwise.
    */
   public boolean allowedDateTime(LocalDateTime now) {
-    return checkDate(now.toLocalDate()) &&
-        checkTime(now.toLocalTime()) &&
-        checkWeekday(now.getDayOfWeek());
+    return checkDate(now.toLocalDate())
+            && checkTime(now.toLocalTime())
+            && checkWeekday(now.getDayOfWeek());
   }
 
   /**
@@ -66,8 +66,8 @@ public class Schedule {
    * @return True if the date is within the valid range, false otherwise
    */
   private boolean checkDate(LocalDate now) {
-    return (now.isAfter(fromDate) || now.equals(fromDate)) &&
-        (now.isBefore(toDate) || now.equals(toDate));
+    return (now.isAfter(fromDate) || now.equals(fromDate))
+            && (now.isBefore(toDate) || now.equals(toDate));
   }
 
   /**
@@ -78,8 +78,8 @@ public class Schedule {
    * @return True if the time is within the valid range, false otherwise.
    */
   private boolean checkTime(LocalTime now) {
-    return (now.isAfter(fromHour) || now.equals(fromHour)) &&
-        (now.isBefore(toHour) || now.equals(toHour));
+    return (now.isAfter(fromHour) || now.equals(fromHour))
+            && (now.isBefore(toHour) || now.equals(toHour));
   }
 
   /**
