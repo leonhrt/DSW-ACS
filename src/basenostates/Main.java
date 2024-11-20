@@ -6,7 +6,7 @@ package basenostates;
 import basenostates.areas.DirectoryAreas;
 import basenostates.doors.DirectoryDoors;
 import basenostates.doors.doorstates.Clock;
-import basenostates.users.user_groups.DirectoryUserGroups;
+import basenostates.users.usergroups.DirectoryUserGroups;
 import basenostates.users.DirectoryUsers;
 
 public class Main {

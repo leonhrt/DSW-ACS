@@ -1,7 +1,7 @@
 package basenostates.users;
 
 import basenostates.areas.Space;
-import basenostates.users.user_groups.UserGroup;
+import basenostates.users.usergroups.UserGroup;
 
 import java.time.LocalDateTime;
 

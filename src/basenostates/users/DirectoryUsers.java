@@ -1,7 +1,7 @@
 package basenostates.users;
 
-import basenostates.users.user_groups.DirectoryUserGroups;
-import basenostates.users.user_groups.UserGroup;
+import basenostates.users.usergroups.DirectoryUserGroups;
+import basenostates.users.usergroups.UserGroup;
 
 import java.util.ArrayList;
 

@@ -1,29 +1,36 @@
-package basenostates.users.user_groups;
+package basenostates.users.usergroups;
 
 import basenostates.areas.DirectoryAreas;
 import basenostates.areas.Space;
 import basenostates.areas.visitor.FindAreaByIdVisitor;
 import basenostates.areas.visitor.GetSpacesVisitor;
 import basenostates.doors.doorstates.Actions;
-
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 /**
- * The DirectoryUsersGroups class manages the creation and retrieval of user groups within the system.
+ * The DirectoryUsersGroups class manages the creation and retrieval
+ * of user groups within the system.
  */
 public class DirectoryUserGroups {
-  private static final ArrayList<UserGroup> userGroups = new ArrayList<>(); // All the user groups in the system
+  // All the user groups in the system
+  private static final ArrayList<UserGroup> userGroups = new ArrayList<>();
 
   /**
    * Creates and initializes predefined user groups in the system.
-   * <p>
-   * The predefined groups include:
+   *
+   * <p>The predefined groups include:
    * Administrator: Full access to all actions, spaces, and at any time.
    * Manager: Access to all actions and spaces with limited time constraints.
-   * Employee: Restricted actions and access to spaces, excluding the parking area, with working hours.
+   * Employee: Restricted actions and access to spaces,
+   * excluding the parking area, with working hours.
    * Blank: A placeholder group with no permissions.
    */
   public static void makeUserGroups() {
@@ -54,6 +61,9 @@ public class DirectoryUserGroups {
         new HashSet<>(List.of(DayOfWeek.values()))      // All days of the week
     );
 
+    // Add administrator group to list of groups
+    userGroups.add(new UserGroup("Administrator", adminActions, adminSpaces, adminSchedule));
+
     // Manager: Can do all actions
     Set<String> managerActions = new HashSet<>(allActions);
 
@@ -72,6 +82,9 @@ public class DirectoryUserGroups {
         // Weekdays + Saturday
         new HashSet<>(EnumSet.complementOf(EnumSet.of(DayOfWeek.SUNDAY)))
     );
+
+    // Add manager group to list of groups
+    userGroups.add(new UserGroup("Manager", managerActions, managerSpaces, managerSchedule));
 
     // Employee: Can open, close and unlock shortly
     Set<String> employeeActions = new HashSet<>(allActions);
@@ -96,9 +109,8 @@ public class DirectoryUserGroups {
         ))
     );
 
-    userGroups.add(new UserGroup("Administrator", adminActions, adminSpaces, adminSchedule));
-    userGroups.add(new UserGroup("Manager", managerActions, managerSpaces, managerSchedule));
     userGroups.add(new UserGroup("Employee", employeeActions, employeeSpaces, employeeSchedule));
+
     userGroups.add(new UserGroup("Blank"));
   }
 

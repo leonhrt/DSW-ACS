@@ -1,4 +1,4 @@
-package basenostates.users.user_groups;
+package basenostates.users.usergroups;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
