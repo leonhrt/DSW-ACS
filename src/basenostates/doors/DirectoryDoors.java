@@ -2,7 +2,6 @@ package basenostates.doors;
 
 import basenostates.areas.Space;
 import basenostates.areas.visitor.FindAreaByIdVisitor;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
