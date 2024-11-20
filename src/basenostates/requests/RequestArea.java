@@ -1,17 +1,18 @@
 package basenostates.requests;
 
+import basenostates.areas.Area;
 import basenostates.areas.visitor.FindAreaByIdVisitor;
 import basenostates.areas.visitor.GetDoorsGivingAccessVisitor;
-import basenostates.doors.doorstates.Actions;
-import basenostates.areas.Area;
 import basenostates.doors.Door;
+import basenostates.doors.doorstates.Actions;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-
-
+/**
+ * Class that handles the requests for Area objects (Partitions and Spaces currently).
+ */
 public class RequestArea implements Request {
   private final String credential;
   private final String action;
@@ -20,10 +21,20 @@ public class RequestArea implements Request {
   private final ArrayList<RequestReader> requests = new ArrayList<>();
 
 
+  /**
+   * Main constructor of the class. Sets all the attributes not automatically
+   * instantiated as requests attribute.
+   *
+   * @param credential The credential of the user which is trying to access the area.
+   * @param action The action to perform in that area.
+   * @param now The moment when the action was sent.
+   * @param areaId The area which will receive the action requested.
+   */
   public RequestArea(String credential, String action, LocalDateTime now, String areaId) {
     this.credential = credential;
     this.areaId = areaId;
-    assert action.equals(Actions.LOCK) || action.equals(Actions.UNLOCK) : "invalid action " + action + " for an area request";
+    assert action.equals(Actions.LOCK) || action.equals(Actions.UNLOCK)
+            : "invalid action " + action + " for an area request";
     this.action = action;
     this.now = now;
   }
@@ -53,12 +64,23 @@ public class RequestArea implements Request {
     } else {
       requestsDoorsStr = requests.toString();
     }
-    return "Request{" + "credential=" + credential + ", action=" + action + ", now=" + now + ", areaId=" + areaId + ", requestsDoors=" + requestsDoorsStr + "}";
+    return "Request{" + "credential=" + credential
+            + ", action=" + action
+            + ", now=" + now
+            + ", areaId=" + areaId
+            + ", requestsDoors=" + requestsDoorsStr + "}";
   }
 
   // processing the request of an area is creating the corresponding door requests and forwarding
   // them to all of its doors. For some it may be authorized and action will be done, for others
   // it won't be authorized and nothing will happen to them.
+
+  /**
+   * Method that processes the request of an area.
+   * Creates the corresponding door request and forwards to all of them.
+   * For some it may be authorized and action will be done, for others
+   * it won't be authorized and nothing will happen to them
+   */
   public void process() {
     // commented out until Area, Space and Partition are implemented
 
@@ -69,7 +91,8 @@ public class RequestArea implements Request {
     // an Area is a Space or a Partition
     if (area != null) {
       // is null when from the app we click on an action but no place is selected because
-      // there (flutter) I don't control like I do in javascript that all the parameters are provided
+      // there (flutter) I don't control like I do in javascript
+      // that all the parameters are provided
 
       // Make all the door requests, one for each door in the area, and process them.
       // Look for the doors in the spaces of this area that give access to them.
