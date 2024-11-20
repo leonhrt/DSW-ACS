@@ -18,7 +18,7 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
    * @param area The area to retrieve all its giving access doors.
    * @return A list of all doors that give access to that area.
    */
-  public ArrayList<Door> getDoorsGivingAccess(Area area){
+  public static ArrayList<Door> getDoorsGivingAccess(Area area){
     GetDoorsGivingAccessVisitor visitor = new GetDoorsGivingAccessVisitor();
     area.accept(visitor);
     return visitor.doors;

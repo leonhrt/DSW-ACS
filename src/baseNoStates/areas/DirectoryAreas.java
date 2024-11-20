@@ -44,6 +44,9 @@ public class DirectoryAreas {
     allAreas.addAll(Arrays.asList(building, basement, ground_floor, floor1, stairs, exterior, parking, hall, room1, room2, room3, corridor, it));
   }
 
+  public static Area getRootArea() {
+    return rootArea;
+  }
 
   /**
    * Finds an area by its ID in the list of all areas.
