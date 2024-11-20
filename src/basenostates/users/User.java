@@ -2,12 +2,13 @@ package basenostates.users;
 
 import basenostates.areas.Space;
 import basenostates.users.usergroups.UserGroup;
-
 import java.time.LocalDateTime;
 
 /**
- * The User class represents an entity within the system. that holds name, credential and belongs to a userGroup.
- * It allows interaction with the system features based on the user's group, such as actions and spaces.
+ * The User class represents an entity within the system that holds
+ * name, credential and belongs to a userGroup.
+ * It allows interaction with the system features based on the user's group,
+ * such as actions and spaces.
  */
 public class User {
   private final String name;
@@ -15,7 +16,8 @@ public class User {
   private final UserGroup userGroup;
 
   /**
-   * Constructor for the User class. To ensure that the user belongs to a group, we add the group to the user.
+   * Constructor for the User class.
+   * To ensure that the user belongs to a group, we add the group to the user.
    * That is why we first create the groups and then the users.
    *
    * @param name The name of the user.
