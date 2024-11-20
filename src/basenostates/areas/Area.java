@@ -34,6 +34,11 @@ public abstract class Area {
    */
   public abstract void accept(Visitor visitor);
 
+  /**
+   * Getter of the ID of the specific area, shared amongst its class implementations.
+   *
+   * @return The ID of the Area.
+   */
   public String getId() {
     return id;
   }
