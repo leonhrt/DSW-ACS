@@ -11,9 +11,10 @@ import org.json.JSONObject;
 /**
  * The Door class represents a physical door within a building.
  * A door can be in one of several states, these are represented by the DoorState class.
- * Also, the user can interact with the door with open and close actions if they have the right permissions.
- * <p>
- * This class is a part of the State Pattern implemented for the DoorStates
+ * Also, the user can interact with the door with open and close actions
+ * if they have the right permissions.
+ *
+ * <p>This class is a part of the State Pattern implemented for the DoorStates
  */
 public class Door {
   private final String id;
@@ -90,6 +91,7 @@ public class Door {
 
   /**
    * Execute the visitDoor method of the corresponding visitor.
+   *
    * @param visitor The visitor to accept and execute.
    */
   public void accept(Visitor visitor) {
@@ -148,7 +150,9 @@ public class Door {
    */
   @Override
   public String toString() {
-    return "Door{" + ", id='" + id + '\'' + ", closed=" + closed + ", state=" + getStateName() + "}";
+    return "Door{" + ", id='" + id + '\''
+            + ", closed=" + closed
+            + ", state=" + getStateName() + "}";
   }
 
   /**
