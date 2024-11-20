@@ -29,6 +29,8 @@ public abstract class Area {
     this.parentPartition = parentPartition;
   }
 
+  public abstract void accept(Visitor visitor);
+
   /**
    * Finds an area by its ID.
    *

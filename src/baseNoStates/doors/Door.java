@@ -1,6 +1,7 @@
 package baseNoStates.doors;
 
 import baseNoStates.areas.Space;
+import baseNoStates.areas.Visitor;
 import baseNoStates.doors.doorstates.Actions;
 import baseNoStates.doors.doorstates.DoorState;
 import baseNoStates.doors.doorstates.UnlockedState;
@@ -85,6 +86,10 @@ public class Door {
         assert false : "Unknown action " + action;
         System.exit(-1);
     }
+  }
+
+  public void accept(Visitor visitor){
+    visitor.visitDoor(this);
   }
 
   /**

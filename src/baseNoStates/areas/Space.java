@@ -29,6 +29,11 @@ public class Space extends Area {
     if(parentPartition!=null) parentPartition.addArea(this);
   }
 
+  @Override
+  public void accept(Visitor visitor) {
+    visitor.visitSpace(this);
+  }
+
   /**
    * Finds an area by its ID using the Area superclass method.
    *

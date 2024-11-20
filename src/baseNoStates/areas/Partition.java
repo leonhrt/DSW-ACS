@@ -33,6 +33,15 @@ public class Partition extends Area {
     }
   }
 
+  @Override
+  public void accept(Visitor visitor) {
+    visitor.visitPartition(this);
+  }
+
+  public ArrayList<Area> getAreas() {
+    return areas;
+  }
+
   /**
    * Finds an area by its ID using the Area superclass.
    *
