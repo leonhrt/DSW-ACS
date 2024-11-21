@@ -24,8 +24,10 @@ public class GetSpacesVisitor implements Visitor {
    * @return The list of spaces included in the area.
    */
   public static ArrayList<Space> getSpaces(Area area) {
+    //TODO System.out.println("Starting visitor getSpaces for the area: " + area);
     GetSpacesVisitor visitor = new GetSpacesVisitor();
     area.accept(visitor);
+    //TODO System.out.println("getSpaces visitor found " + visitor.spaces.size() + " spaces");
     return visitor.spaces;
   }
 
@@ -35,6 +37,7 @@ public class GetSpacesVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
+    //TODO System.out.println("getSpaces visiting partition: " + partition);
     for (Area area : partition.getAreas()) {
       area.accept(this);
     }
@@ -46,6 +49,7 @@ public class GetSpacesVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
+    //TODO System.out.println("visitSpace visiting space: " + space);
     spaces.add(space);
   }
 

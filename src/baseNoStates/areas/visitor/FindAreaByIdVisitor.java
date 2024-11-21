@@ -29,9 +29,11 @@ public class FindAreaByIdVisitor implements Visitor {
    * @return The area corresponding to the id.
    */
   public static Area findAreaById(String id) {
+    //TODO System.out.println("Starting visitor findAreaById, id: " + id);
     FindAreaByIdVisitor visitor = new FindAreaByIdVisitor(id);
     Area root = DirectoryAreas.getRootArea();
     root.accept(visitor);
+    //TODO System.out.println("findAreaById found " + visitor.area + " as " + visitor.areaId);
     return visitor.area;
   }
 
@@ -43,8 +45,10 @@ public class FindAreaByIdVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
+    //TODO System.out.println("findAreaById visiting partition: " + partition);
     if (partition.getId().equals(areaId)) {
       area = partition;
+      //TODO System.out.println("findAreaById visitor found " + partition + " as area id: " + areaId);
     } else {
       int i = 0;
       ArrayList<Area> areas = partition.getAreas();
@@ -61,7 +65,9 @@ public class FindAreaByIdVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
+    //TODO System.out.println("findAreaById visiting space: " + space);
     if(space.getId().equals(areaId)) {
+      //TODO System.out.println("findAreaById visitor found " + space + " as area id: " + areaId);
       area = space;
     }
   }
