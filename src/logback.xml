@@ -29,57 +29,52 @@
         <file>src/logs/log_output.html</file>
     </appender>
 
-
     <!--    Logger for milestone 1 (separate by logging levels) -->
     <logger name="firstMilestone" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-
     </logger>
 
-    <logger name="firstMilestone" level="info" additivity="false">
+    <!--
+    <logger name="firstMilestone" level="off" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-
     </logger>
-
-    <logger name="firstMilestone" level="warn" additivity="false">
-        <appender-ref ref="CONSOLE"/>
-        <appender-ref ref="HTML"/>
-        <appender-ref ref="FILE"/>
-
-    </logger>
-
+    -->
     <!--    Logger for milestone 2 (separate by logging levels) -->
     <logger name="secondMilestone" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-
     </logger>
-
-    <logger name="secondMilestone" level="info" additivity="false">
+    <!--
+    <logger name="secondMilestone" level="off" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-
     </logger>
+    -->
 
-    <logger name="secondMilestone" level="warn" additivity="false">
+    <!--    Default root logger -->
+    <root level="debug">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
+    </root>
 
-    </logger>
+    <!--
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="HTML"/>
+        <appender-ref ref="FILE"/>
+    </root>
 
-    <!--    Default root logger
     <root level="warn">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="XML"/>
     </root>
     -->
 </configuration>

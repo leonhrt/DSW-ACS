@@ -12,7 +12,7 @@ import baseNoStates.doors.Door;
  */
 public class LockedState extends DoorState {
   private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
-  //private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
+  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
 
   public LockedState(Door door) {
     super(door);
