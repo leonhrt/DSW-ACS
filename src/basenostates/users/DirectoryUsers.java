@@ -3,6 +3,8 @@ package basenostates.users;
 import basenostates.users.usergroups.DirectoryUserGroups;
 import basenostates.users.usergroups.UserGroup;
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The DirectoryUsers class manages a collection of users within the system.
@@ -11,6 +13,7 @@ import java.util.ArrayList;
 public final class DirectoryUsers {
   private static final ArrayList<User> users = new ArrayList<>();
 
+  private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
   /**
    * Initializes the users list with predefined user accounts
    * and their associated groups.
@@ -77,7 +80,7 @@ public final class DirectoryUsers {
         return user;
       }
     }
-    System.out.println("user with credential " + credential + " not found");
+    milestone1.warn("user with credential " + credential + " not found");
     return null; // otherwise we get a Java error
   }
 

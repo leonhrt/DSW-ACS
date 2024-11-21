@@ -6,6 +6,8 @@ import basenostates.areas.Partition;
 import basenostates.areas.Space;
 import basenostates.doors.Door;
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This visitor class accesses to the root area and look in all
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 public class FindAreaByIdVisitor implements Visitor {
   private Area area;
   private final String areaId;
+
+  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
 
   private FindAreaByIdVisitor(String id) {
     this.areaId = id;
@@ -31,9 +35,11 @@ public class FindAreaByIdVisitor implements Visitor {
    * @return The area corresponding to the id.
    */
   public static Area findAreaById(String id) {
+    milestone2.debug("Starting visitor findAreaById, id: " + id);
     FindAreaByIdVisitor visitor = new FindAreaByIdVisitor(id);
     Area root = DirectoryAreas.getRootArea();
     root.accept(visitor);
+    milestone2.debug("findAreaById found " + visitor.area + " as " + visitor.areaId);
     return visitor.area;
   }
 
@@ -48,8 +54,10 @@ public class FindAreaByIdVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
+    milestone2.debug("findAreaById visiting partition: " + partition);
     if (partition.getId().equals(areaId)) {
       area = partition;
+      milestone2.debug("findAreaById visitor found " + partition + " as area id: " + areaId);
     } else {
       int i = 0;
       ArrayList<Area> areas = partition.getAreas();
@@ -69,7 +77,9 @@ public class FindAreaByIdVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
+    milestone2.debug("findAreaById visiting space: " + space);
     if (space.getId().equals(areaId)) {
+      milestone2.debug("findAreaById visitor found " + space + " as area id: " + areaId);
       area = space;
     }
   }

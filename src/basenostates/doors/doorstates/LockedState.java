@@ -1,6 +1,8 @@
 package basenostates.doors.doorstates;
 
 import basenostates.doors.Door;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The LockedState class represents the state of a door when it is locked.
@@ -8,6 +10,9 @@ import basenostates.doors.Door;
  * <p>This class is the implementation of the abstract class DoorState for the State Pattern
  */
 public class LockedState extends DoorState {
+  private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
+
+
   /**
    * Main constructor of the class, used to define the state of the door
    * to the locked state.
@@ -24,7 +29,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void open() {
-    System.out.println("Can't open the door, it's locked");
+    milestone1.warn("Can't open the door " + door.getId() +", it's locked");
   }
 
   /**
@@ -32,7 +37,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void close() {
-    System.out.println("The door is already closed and locked");
+    milestone1.warn("The door " +door.getId()+ " is already closed and locked");
   }
 
   /**
@@ -40,7 +45,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void lock() {
-    System.out.println("The door is already locked");
+    milestone1.warn("The door "+ door.getId() +" is already locked");
   }
 
   /**
@@ -49,7 +54,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void unlock() {
-    System.out.println("Unlocking the door");
+    milestone1.info("Unlocking the door " +door.getId());
     door.setState(new UnlockedState(door));
   }
 
@@ -58,7 +63,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void unlockShortly() {
-    System.out.println("Unlocking the door for 10 seconds");
+    milestone1.info("Unlocking "+ door.getId() +" the door for 10 seconds");
     door.setState(new UnlockShortlyState(door));
   }
 }

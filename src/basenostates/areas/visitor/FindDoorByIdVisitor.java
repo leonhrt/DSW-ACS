@@ -6,6 +6,8 @@ import basenostates.areas.Partition;
 import basenostates.areas.Space;
 import basenostates.doors.Door;
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This visitor class accesses to the root area and look in all its tree
@@ -15,6 +17,8 @@ import java.util.ArrayList;
 public class FindDoorByIdVisitor implements Visitor {
   private Door door;
   private final String doorId;
+
+  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
 
   private FindDoorByIdVisitor(String id) {
     this.doorId = id;
@@ -31,9 +35,11 @@ public class FindDoorByIdVisitor implements Visitor {
    * @return The door corresponding to the id.
    */
   public static Door findDoorById(String id) {
+    milestone2.debug("Starting visitor findDoorById for the id: " + id);
     FindDoorByIdVisitor visitor = new FindDoorByIdVisitor(id);
     Area root = DirectoryAreas.getRootArea();
     root.accept(visitor);
+    milestone2.debug("findDoorById visitor found the door " + visitor.door);
     return visitor.door;
   }
 
@@ -45,6 +51,7 @@ public class FindDoorByIdVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
+    milestone2.debug("findDoorById visiting partition: " + partition);
     int i = 0;
     ArrayList<Area> areas = partition.getAreas();
     while (door == null && i < areas.size()) {
@@ -61,6 +68,7 @@ public class FindDoorByIdVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
+    milestone2.debug("findDoorById visiting space: " + space);
     int i = 0;
     ArrayList<Door> doors = space.getDoors();
     while (door == null && i < doors.size()) {
@@ -77,6 +85,7 @@ public class FindDoorByIdVisitor implements Visitor {
    */
   @Override
   public void visitDoor(Door door) {
+    milestone2.debug("getDoorsGivingAccess visiting door: " + door);
     if (door.getId().equals(doorId)) {
       this.door = door;
     }

@@ -5,6 +5,8 @@ import basenostates.areas.Partition;
 import basenostates.areas.Space;
 import basenostates.doors.Door;
 import java.util.ArrayList;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This visitor class is made to access the specified area
@@ -12,6 +14,8 @@ import java.util.ArrayList;
  */
 public class GetSpacesVisitor implements Visitor {
   private final ArrayList<Space> spaces = new ArrayList<>();
+
+  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
 
   // Private constructor to force the static method
   private GetSpacesVisitor() {}
@@ -28,8 +32,10 @@ public class GetSpacesVisitor implements Visitor {
    * @return The list of spaces included in the area.
    */
   public static ArrayList<Space> getSpaces(Area area) {
+    milestone2.debug("Starting visitor getSpaces for the area: " + area);
     GetSpacesVisitor visitor = new GetSpacesVisitor();
     area.accept(visitor);
+    milestone2.debug("getSpaces visitor found " + visitor.spaces.size() + " spaces");
     return visitor.spaces;
   }
 
@@ -40,6 +46,7 @@ public class GetSpacesVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
+    milestone2.debug("getSpaces visiting partition: " + partition);
     for (Area area : partition.getAreas()) {
       area.accept(this);
     }
@@ -52,6 +59,7 @@ public class GetSpacesVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
+    milestone2.debug("visitSpace visiting space: " + space);
     spaces.add(space);
   }
 

@@ -4,6 +4,8 @@ import basenostates.areas.Space;
 import basenostates.areas.visitor.FindAreaByIdVisitor;
 import java.util.ArrayList;
 import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The DirectoryDoors class manages a collection of doors within the
@@ -11,6 +13,8 @@ import java.util.Arrays;
  */
 public final class DirectoryDoors {
   private static ArrayList<Door> allDoors;
+
+  private static final Logger globalLog = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
 
   /**
@@ -56,7 +60,7 @@ public final class DirectoryDoors {
    * @return an ArrayList of all doors
    */
   public static ArrayList<Door> getAllDoors() {
-    System.out.println(allDoors);
+    globalLog.debug(allDoors.toString());
     return allDoors;
   }
 
