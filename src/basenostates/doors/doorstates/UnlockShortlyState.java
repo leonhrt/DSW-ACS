@@ -71,7 +71,8 @@ public class UnlockShortlyState extends DoorState implements Observer {
    */
   @Override
   public void lock() {
-    milestone1.info("The door " + door.getId() +" will be locked in 10 seconds automatically, be patient");
+    milestone1.info("The door " + door.getId()
+        + " will be locked in 10 seconds automatically, be patient");
   }
 
   /**
