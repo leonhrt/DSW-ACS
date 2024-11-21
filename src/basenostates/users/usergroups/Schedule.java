@@ -53,6 +53,10 @@ public class Schedule {
    * @return True if the provided date and time are allowed by the schedule, false otherwise.
    */
   public boolean allowedDateTime(LocalDateTime now) {
+    if (!validSchedule()) {
+      return false;
+    }
+
     return checkDate(now.toLocalDate())
             && checkTime(now.toLocalTime())
             && checkWeekday(now.getDayOfWeek());
@@ -90,5 +94,19 @@ public class Schedule {
    */
   private boolean checkWeekday(DayOfWeek now) {
     return weekdays.contains(now);
+  }
+
+  /**
+   * Check if the instance of the Schedule is valid.
+   * The instance of the Schedule is valid only and only if all their values are not null.
+   *
+   * @return True if the schedule is not null, false otherwise.
+   */
+  private boolean validSchedule() {
+    return fromDate != null
+        && toDate != null
+        && fromHour != null
+        && toHour != null
+        && weekdays != null;
   }
 }
