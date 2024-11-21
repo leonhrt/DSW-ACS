@@ -38,7 +38,7 @@ public class ProppedState extends DoorState {
    */
   @Override
   public void close() {
-    milestone1.info("Closing the door "+ door.getId());
+    milestone1.info("Closing the door " + door.getId());
     door.setState(new LockedState(door));
     door.setClosed(true);
   }
@@ -56,7 +56,7 @@ public class ProppedState extends DoorState {
    */
   @Override
   public void unlock() {
-    milestone1.warn(door.getId() +" it's propped right now, can't unlock");
+    milestone1.warn(door.getId() + " it's propped right now, can't unlock");
   }
 
   /**
@@ -64,6 +64,7 @@ public class ProppedState extends DoorState {
    */
   @Override
   public void unlockShortly() {
-    milestone1.warn("Can't unlock shortly "+ door.getId() +" because it's propped");
+    milestone1.warn("Can't unlock shortly " + door.getId()
+        + " because it's propped");
   }
 }
