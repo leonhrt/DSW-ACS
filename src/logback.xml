@@ -29,35 +29,27 @@
         <file>src/logs/log_output.html</file>
     </appender>
 
-    <!--    Appender to send logs to an XML file   -->
-    <appender name="XML" class="ch.qos.logback.core.FileAppender">
-        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="ch.qos.logback.classic.xml.XMLLayout"/>
-        </encoder>
-        <!--   Output XML file name   -->
-        <file>src/logs/log_output.xml</file>
-    </appender>
 
     <!--    Logger for milestone 1 (separate by logging levels) -->
     <logger name="firstMilestone" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="XML"/>
+
     </logger>
 
     <logger name="firstMilestone" level="info" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="XML"/>
+
     </logger>
 
     <logger name="firstMilestone" level="warn" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="XML"/>
+
     </logger>
 
     <!--    Logger for milestone 2 (separate by logging levels) -->
@@ -65,28 +57,29 @@
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="XML"/>
+
     </logger>
 
     <logger name="secondMilestone" level="info" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="XML"/>
+
     </logger>
 
     <logger name="secondMilestone" level="warn" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
-        <appender-ref ref="XML"/>
+
     </logger>
 
-    <!--    Default root logger -->
+    <!--    Default root logger
     <root level="warn">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
         <appender-ref ref="XML"/>
     </root>
+    -->
 </configuration>
