@@ -14,6 +14,7 @@ public final class DirectoryUsers {
   private static final ArrayList<User> users = new ArrayList<>();
 
   private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
+
   /**
    * Initializes the users list with predefined user accounts
    * and their associated groups.
