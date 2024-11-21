@@ -1,12 +1,11 @@
 package basenostates.doors.doorstates;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.time.LocalDateTime;
 import java.util.Observable;
 import java.util.Timer;
 import java.util.TimerTask;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * The Clock class represents a singleton clock that provides the current date and time.
@@ -29,6 +28,7 @@ public class Clock extends Observable {
   private static Clock uniqueInstance = null;
 
   private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
+
   /**
    * Private constructor to avoid instantiation from outside the class (Singleton pattern).
    * Initializes the clock with a period of 1 second between updates.
