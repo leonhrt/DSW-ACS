@@ -1,5 +1,8 @@
 package baseNoStates.doors;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import baseNoStates.areas.Space;
 import baseNoStates.areas.visitor.FindAreaByIdVisitor;
 
@@ -12,6 +15,8 @@ import java.util.Arrays;
  */
 public final class DirectoryDoors {
   private static ArrayList<Door> allDoors;
+
+  private static final Logger globalLog = LoggerFactory.getLogger(Logger.ROOT_LOGGER_NAME);
 
 
   /**
@@ -57,7 +62,7 @@ public final class DirectoryDoors {
    * @return an ArrayList of all doors
    */
   public static ArrayList<Door> getAllDoors() {
-    System.out.println(allDoors);
+    globalLog.debug(allDoors.toString());
     return allDoors;
   }
 

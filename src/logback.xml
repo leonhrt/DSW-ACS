@@ -37,14 +37,14 @@
     </logger>
 
     <!--    Logger for milestone 2 (separate by logging levels) -->
-    <logger name="secondMilestone" level="off" additivity="false">
+    <logger name="secondMilestone" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>
     </logger>
 
     <!--    Default root logger -->
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="HTML"/>
         <appender-ref ref="FILE"/>

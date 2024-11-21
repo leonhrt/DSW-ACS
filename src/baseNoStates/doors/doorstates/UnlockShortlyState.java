@@ -48,10 +48,10 @@ public class UnlockShortlyState extends DoorState implements Observer {
   @Override
   public void open() {
     if (door.isClosed()) {
-      milestone1.info("Opening the door...");
+      milestone1.info("Opening the door..." + door.getId());
       door.setClosed(false);
     } else {
-      milestone1.warn("The door is already open");
+      milestone1.warn("The door " + door.getId() + " is already open");
     }
   }
 
@@ -62,9 +62,9 @@ public class UnlockShortlyState extends DoorState implements Observer {
   @Override
   public void close() {
     if (door.isClosed()) {
-      milestone1.warn("The door is already closed");
+      milestone1.warn("The door " + door.getId() + " is already closed");
     } else {
-      milestone1.info("Closing the door...");
+      milestone1.info("Closing the door " + door.getId());
       door.setClosed(true);
     }
   }
@@ -74,7 +74,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
    */
   @Override
   public void lock() {
-    milestone1.info("The door will be locked in 10 seconds automatically, be patient");
+    milestone1.info("The door " + door.getId() +" will be locked in 10 seconds automatically, be patient");
   }
 
   /**
@@ -82,7 +82,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
    */
   @Override
   public void unlock() {
-    milestone1.warn("The door is unlocked temporarily, so can't unlock");
+    milestone1.warn("The door " + door.getId() + " is unlocked temporarily, so can't unlock");
   }
 
   /**
