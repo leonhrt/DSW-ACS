@@ -13,6 +13,7 @@ public class UnlockedState extends DoorState {
 
   private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
   //private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
+
   /**
    * Constructs a new DoorState with the specified door.
    *
@@ -31,10 +32,10 @@ public class UnlockedState extends DoorState {
   @Override
   public void open() {
     if (door.isClosed()) {        //Check if the door is closed so it can be opened
-      milestone1.info("Opening the door " +door.getId());
+      milestone1.info("Opening the door " + door.getId());
       door.setClosed(false);
     } else {
-      milestone1.warn("The door " +door.getId()+ " is already open");
+      milestone1.warn("The door " + door.getId() + " is already open");
     }
   }
 
@@ -46,10 +47,10 @@ public class UnlockedState extends DoorState {
   @Override
   public void close() {
     if (!door.isClosed()) {       //Check if the door is open so it can be closed
-      milestone1.info("Closing the door "+door.getId());
+      milestone1.info("Closing the door " + door.getId());
       door.setClosed(true);
     } else {
-      milestone1.warn("The door " +door.getId()+ "  is already closed");
+      milestone1.warn("The door " + door.getId() + "  is already closed");
     }
   }
 
@@ -60,7 +61,7 @@ public class UnlockedState extends DoorState {
   @Override
   public void lock() {
     if (!door.isClosed()) {       //Door cannot be locked if it's open
-      milestone1.warn ("Can't lock the door " +door.getId()+ " because it's open");
+      milestone1.warn("Can't lock the door " + door.getId() + " because it's open");
     } else {
       milestone1.info("Locking the door " + door.getId());
       door.setState(new LockedState(door));
@@ -72,7 +73,7 @@ public class UnlockedState extends DoorState {
    */
   @Override
   public void unlock() {
-    milestone1.warn("The door " +door.getId()+ "  is already unlocked");
+    milestone1.warn("The door " + door.getId() + "  is already unlocked");
   }
 
   /**
@@ -80,6 +81,6 @@ public class UnlockedState extends DoorState {
    */
   @Override
   public void unlockShortly() {
-    milestone1.warn("The door " +door.getId()+ " is already unlocked, can't unlock shortly");
+    milestone1.warn("The door " + door.getId() + " is already unlocked, can't unlock shortly");
   }
 }
