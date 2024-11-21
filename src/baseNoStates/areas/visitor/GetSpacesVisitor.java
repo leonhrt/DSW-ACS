@@ -1,5 +1,8 @@
 package baseNoStates.areas.visitor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import baseNoStates.areas.Area;
 import baseNoStates.areas.Partition;
 import baseNoStates.areas.Space;
@@ -13,6 +16,8 @@ import java.util.ArrayList;
 public class GetSpacesVisitor implements Visitor {
   private final ArrayList<Space> spaces = new ArrayList<>();
 
+  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
+
   // Private constructor to force the static method
   private GetSpacesVisitor() {}
 
@@ -24,10 +29,10 @@ public class GetSpacesVisitor implements Visitor {
    * @return The list of spaces included in the area.
    */
   public static ArrayList<Space> getSpaces(Area area) {
-    //TODO System.out.println("Starting visitor getSpaces for the area: " + area);
+    milestone2.debug("Starting visitor getSpaces for the area: " + area);
     GetSpacesVisitor visitor = new GetSpacesVisitor();
     area.accept(visitor);
-    //TODO System.out.println("getSpaces visitor found " + visitor.spaces.size() + " spaces");
+    milestone2.debug("getSpaces visitor found " + visitor.spaces.size() + " spaces");
     return visitor.spaces;
   }
 
@@ -37,7 +42,7 @@ public class GetSpacesVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
-    //TODO System.out.println("getSpaces visiting partition: " + partition);
+    milestone2.debug("getSpaces visiting partition: " + partition);
     for (Area area : partition.getAreas()) {
       area.accept(this);
     }
@@ -49,7 +54,7 @@ public class GetSpacesVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
-    //TODO System.out.println("visitSpace visiting space: " + space);
+    milestone2.debug("visitSpace visiting space: " + space);
     spaces.add(space);
   }
 

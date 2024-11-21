@@ -1,5 +1,8 @@
 package baseNoStates.areas.visitor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import baseNoStates.areas.Area;
 import baseNoStates.areas.Partition;
 import baseNoStates.areas.Space;
@@ -13,6 +16,8 @@ import java.util.ArrayList;
 public class GetDoorsGivingAccessVisitor implements Visitor {
   private final ArrayList<Door> doors = new ArrayList<>();
 
+  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
+
   private GetDoorsGivingAccessVisitor() {}
 
   /**
@@ -22,10 +27,10 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
    * @return A list of all doors that give access to that area.
    */
   public static ArrayList<Door> getDoorsGivingAccess(Area area) {
-    //TODO System.out.println("Starting visitor getDoorsGivingAccess to area: " + area);
+    milestone2.debug("Starting visitor getDoorsGivingAccess to area: " + area);
     GetDoorsGivingAccessVisitor visitor = new GetDoorsGivingAccessVisitor();
     area.accept(visitor);
-    //TODO System.out.println("getDoorsGivingAccess visitor found " + visitor.doors.size() + " doors");
+    milestone2.debug("getDoorsGivingAccess visitor found " + visitor.doors.size() + " doors");
     return visitor.doors;
   }
 
@@ -37,7 +42,7 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
-    //TODO System.out.println("getDoorsGivingAccess visiting partition: " + partition);
+    milestone2.debug("getDoorsGivingAccess visiting partition: " + partition);
     ArrayList<Space> spaces = GetSpacesVisitor.getSpaces(partition);
 
     // Recursively get the Space items from the current Partition and sub Partitions
@@ -48,8 +53,8 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
     // Once all doors are retrieved, remove the ones that connect two spaces both contained within the partition.
     // So we only keep the ones that really give access to the partition. Also keep the exterior area so its doors are
     // always detected as doors that give access from outside.
-    //TODO System.out.println("getDoorsGivingAccess visitor found " + doors.size() + " doors inside the partition "
-    // + partition + ", removing doors that doesn't give access from the outside");
+    milestone2.debug("getDoorsGivingAccess visitor found " + doors.size() + " doors inside the partition "
+     + partition + ", removing doors that doesn't give access from the outside");
     for(int i = doors.size() - 1; i >= 0; i--) {
       if(spaces.contains(doors.get(i).getFromSpace()) && spaces.contains(doors.get(i).getToSpace())
           && !doors.get(i).getFromSpace().getId().equals("exterior") && !doors.get(i).getToSpace().getId().equals("exterior")){
@@ -64,7 +69,7 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
-    //TODO System.out.println("getDoorsGivingAccess visiting space: " + space);
+    milestone2.debug("getDoorsGivingAccess visiting space: " + space);
 
     // Recursively get the Door items from the current Space
     for (Door door : space.getDoors()) {
@@ -78,7 +83,7 @@ public class GetDoorsGivingAccessVisitor implements Visitor {
    */
   @Override
   public void visitDoor(Door door) {
-    //TODO System.out.println("getDoorsGivingAccess visiting and adding door: " + door);
+    milestone2.debug("getDoorsGivingAccess visiting and adding door: " + door);
     doors.add(door);
   }
 }

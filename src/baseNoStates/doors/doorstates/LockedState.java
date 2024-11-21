@@ -12,7 +12,7 @@ import baseNoStates.doors.Door;
  */
 public class LockedState extends DoorState {
   private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
-  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
+
 
   public LockedState(Door door) {
     super(door);
@@ -24,7 +24,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void open() {
-    milestone1.warn("Can't open the door, it's locked");
+    milestone1.warn("Can't open the door " + door.getId() +", it's locked");
   }
 
   /**
@@ -32,7 +32,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void close() {
-    milestone1.warn("The door is already closed and locked");
+    milestone1.warn("The door " +door.getId()+ " is already closed and locked");
   }
 
   /**
@@ -40,7 +40,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void lock() {
-    milestone1.warn("The door is already locked");
+    milestone1.warn("The door "+ door.getId() +" is already locked");
   }
 
   /**
@@ -48,7 +48,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void unlock() {
-    milestone1.info("Unlocking the door");
+    milestone1.info("Unlocking the door " +door.getId());
     door.setState(new UnlockedState(door));
   }
 
@@ -57,7 +57,7 @@ public class LockedState extends DoorState {
    */
   @Override
   public void unlockShortly() {
-    milestone1.info("Unlocking the door for 10 seconds");
+    milestone1.info("Unlocking "+ door.getId() +" the door for 10 seconds");
     door.setState(new UnlockShortlyState(door));
   }
 }

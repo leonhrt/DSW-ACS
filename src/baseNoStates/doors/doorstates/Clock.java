@@ -1,5 +1,8 @@
 package baseNoStates.doors.doorstates;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.LocalDateTime;
 import java.util.Observable;
 import java.util.Timer;
@@ -21,6 +24,7 @@ public class Clock extends Observable {
   private int period;                         // Interval between updates in milliseconds
   private static Clock uniqueInstance = null; // The unique instance of the clock (Singleton pattern).
 
+  private static final Logger milestone1 = LoggerFactory.getLogger("firstMilestone");
   /**
    * Private constructor to avoid instantiation from outside the class (Singleton pattern).
    * Initializes the clock with a period of 1 second between updates.
@@ -40,7 +44,7 @@ public class Clock extends Observable {
         date = LocalDateTime.now();
         setChanged();          // Notify that the time has changed
         notifyObservers();    // Notify all observers that the time has changed
-        System.out.println("run() executed at " + date);
+        milestone1.debug("run() executed at " + date);
       }
     };
     timer.scheduleAtFixedRate(repeatedTask, 0 , 1000L * period);

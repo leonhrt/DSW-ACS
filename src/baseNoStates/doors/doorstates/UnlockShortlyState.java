@@ -90,7 +90,7 @@ public class UnlockShortlyState extends DoorState implements Observer {
    */
   @Override
   public void unlockShortly() {
-    milestone1.warn("The door is already in unlock shortly state");
+    milestone1.warn("The door " + door.getId() + " is already in unlock shortly state");
   }
 
   /**

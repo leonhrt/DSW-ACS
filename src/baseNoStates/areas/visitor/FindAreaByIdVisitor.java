@@ -1,5 +1,8 @@
 package baseNoStates.areas.visitor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import baseNoStates.areas.Area;
 import baseNoStates.areas.DirectoryAreas;
 import baseNoStates.areas.Partition;
@@ -16,6 +19,8 @@ public class FindAreaByIdVisitor implements Visitor {
   private Area area;
   private final String areaId;
 
+  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
+
   private FindAreaByIdVisitor(String id) {
     this.areaId = id;
     this.area = null;
@@ -29,11 +34,11 @@ public class FindAreaByIdVisitor implements Visitor {
    * @return The area corresponding to the id.
    */
   public static Area findAreaById(String id) {
-    //TODO System.out.println("Starting visitor findAreaById, id: " + id);
+    milestone2.debug("Starting visitor findAreaById, id: " + id);
     FindAreaByIdVisitor visitor = new FindAreaByIdVisitor(id);
     Area root = DirectoryAreas.getRootArea();
     root.accept(visitor);
-    //TODO System.out.println("findAreaById found " + visitor.area + " as " + visitor.areaId);
+    milestone2.debug("findAreaById found " + visitor.area + " as " + visitor.areaId);
     return visitor.area;
   }
 
@@ -45,10 +50,10 @@ public class FindAreaByIdVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
-    //TODO System.out.println("findAreaById visiting partition: " + partition);
+    milestone2.debug("findAreaById visiting partition: " + partition);
     if (partition.getId().equals(areaId)) {
       area = partition;
-      //TODO System.out.println("findAreaById visitor found " + partition + " as area id: " + areaId);
+      milestone2.debug("findAreaById visitor found " + partition + " as area id: " + areaId);
     } else {
       int i = 0;
       ArrayList<Area> areas = partition.getAreas();
@@ -65,9 +70,9 @@ public class FindAreaByIdVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
-    //TODO System.out.println("findAreaById visiting space: " + space);
+    milestone2.debug("findAreaById visiting space: " + space);
     if(space.getId().equals(areaId)) {
-      //TODO System.out.println("findAreaById visitor found " + space + " as area id: " + areaId);
+      milestone2.debug("findAreaById visitor found " + space + " as area id: " + areaId);
       area = space;
     }
   }

@@ -1,5 +1,8 @@
 package baseNoStates.areas.visitor;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import baseNoStates.areas.Area;
 import baseNoStates.areas.DirectoryAreas;
 import baseNoStates.areas.Partition;
@@ -16,6 +19,8 @@ public class FindDoorByIdVisitor implements Visitor {
   private Door door;
   private final String doorId;
 
+  private static final Logger milestone2 = LoggerFactory.getLogger("secondMilestone");
+
   private FindDoorByIdVisitor(String id) {
     this.doorId = id;
     this.door = null;
@@ -30,11 +35,11 @@ public class FindDoorByIdVisitor implements Visitor {
    * @return The door corresponding to the id.
    */
   public static Door findDoorById(String id) {
-    //TODO System.out.println("Starting visitor findDoorById for the id: " + id);
+    milestone2.debug("Starting visitor findDoorById for the id: " + id);
     FindDoorByIdVisitor visitor = new FindDoorByIdVisitor(id);
     Area root = DirectoryAreas.getRootArea();
     root.accept(visitor);
-    //TODO System.out.println("findDoorById visitor found the door " + visitor.door);
+    milestone2.debug("findDoorById visitor found the door " + visitor.door);
     return visitor.door;
   }
 
@@ -46,7 +51,7 @@ public class FindDoorByIdVisitor implements Visitor {
    */
   @Override
   public void visitPartition(Partition partition) {
-    //TODO System.out.println("findDoorById visiting partition: " + partition);
+    milestone2.debug("findDoorById visiting partition: " + partition);
     int i = 0;
     ArrayList<Area> areas = partition.getAreas();
     while (door == null && i < areas.size()) {
@@ -62,7 +67,7 @@ public class FindDoorByIdVisitor implements Visitor {
    */
   @Override
   public void visitSpace(Space space) {
-    //TODO System.out.println("findDoorById visiting space: " + space);
+    milestone2.debug("findDoorById visiting space: " + space);
     int i = 0;
     ArrayList<Door> doors = space.getDoors();
     while (door == null && i < doors.size()) {
@@ -77,7 +82,7 @@ public class FindDoorByIdVisitor implements Visitor {
    */
   @Override
   public void visitDoor(Door door) {
-    //TODO System.out.println("getDoorsGivingAccess visiting door: " + door);
+    milestone2.debug("getDoorsGivingAccess visiting door: " + door);
     if(door.getId().equals(doorId)) {
       this.door = door;
     }
