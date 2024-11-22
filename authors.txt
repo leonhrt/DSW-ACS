@@ -8,6 +8,6 @@ assignades, ens hem anat ajudant entre nosaltres constantment al llarg de tota l
 obtenint com a resultat un treball en que tots sabem i entenem la solució, com funciona
 i com ha estat desarrollada.
 
-Els comentaris també han estat fets per tots tres. L'Arnau 'ha encarregat principalment
+Els comentaris també han estat fets per tots tres. L'Arnau s'ha encarregat principalment
 dels logs, el Ferran d'aplicar el patró visior, i el Leonardo d'aplicar el checkstyle i
 el singleton.

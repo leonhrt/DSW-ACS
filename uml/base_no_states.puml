@@ -29,7 +29,6 @@ package "doors" {
 class DirectoryDoors {
 - {static} allDoors : Door[]
 + {static} makeDoors()
-+ {static} findDoorById(id : String) : Door
 + {static} getAllDoors() : Door[]
 }
 
@@ -47,8 +46,9 @@ class Door {
 '+ setClosed(b : boolean)
 '+ getStateName() : String
 - doAction(action : String)
-+ getFromSpace() : Space
-+ getToSpace() : Space
++ accept(visitor : Visitor)
+'+ getFromSpace() : Space
+'+ getToSpace() : Space
 }
 
 package "doorstates" {
@@ -138,41 +138,77 @@ abstract class Observable {
 }
 
 package "area" {
+
+package "visitor" {
+
+interface Visitor{
++visitPartition(partition : Partition)
++visitSpace(space : Space)
++visitDoor(door : Door)
+}
+
+class FindAreaByIdVisitor implements Visitor {
+-area : Area
+-areaId : String
+-FindAreaByIdVisitor()
++findAreaById(id : String) : Area
++visitPartition(partition : Partition)
++visitSpace(space : Space)
++visitDoor(door : Door)
+}
+
+class FindDoorByIdVisitor implements Visitor {
+-door : Door
+-doorId : String
+-FindDoorByIdVisitor()
++findDoorById(id : String) : Door
++visitPartition(partition : Partition)
++visitSpace(space : Space)
++visitDoor(door : Door)
+}
+
+class GetDoorsGivingAccessVisitor implements Visitor {
+-doors : Door[]
+-GetDoorsGivingAccessVisitor()
++getDoorsGivingAccess(area : Area) : Door[]
++visitPartition(partition : Partition)
++visitSpace(space : Space)
++visitDoor(door : Door)
+}
+
+class GetSpacesVisitor implements Visitor {
+-spaces : Space[]
+-GetSpacesVisitor()
++getSpaces(area : Area) : Space[]
++visitPartition(partition : Partition)
++visitSpace(space : Space)
++visitDoor(door : Door)
+}
+
+}
+
 abstract Class Area{
 #id : String
-#parentPartition : Partition
 +Area(id : String, parentPartition : Partition)
-+{abstract}getSpaces() : Space[]
-+{abstract}getDoorsGivingAccess() : Door[]
-+findAreaById(id : String) : Area
++{abstract} accept(visitor : Visitor)
 }
 
 class DirectoryAreas{
 -rootArea : Area
--allDoors : Door[]
--allAreas : Area[]
 +makeAreas()
-+findAreaById(id : String) : Area
-+findDoorById(id : String) : Door
-+getAllDoors() : Door[]
-+addDoor(door : Door)
 }
 
 class Space extends Area{
 -doors : Door[]
 +Space(id : String, parentPartition : Partition)
-+getSpaces() : Space[]
-+getDoorsGivingAccess() : Door[]
-+findAreaById(id : String) : Area
++accept(visitor : Visitor)
 +addDoor(door : Door)
 }
 
 class Partition extends Area{
 -areas : Area[]
 +Partition(id : String, parentPartition : Partition)
-+getSpaces() : Space[]
-+getDoorsGivingAccess() : Door[]
-+findAreaById(id : String) : Area
++accept(visitor : Visitor)
 +addArea(area : Area)
 }
 }
@@ -252,7 +288,9 @@ Door --> "1" Space : fromSpace
 Door --> "1" Space : toSpace
 Space "1" *-- "*" Door : doors
 'User -> "*" Area
-Partition "1" *-- "*" Area : spaces
+Area --> Visitor : accepts
+Door -up-> Visitor : accepts
+Partition "1" *-- "*" Area : areas
 DirectoryAreas --> "1" Area : rootArea
 'DirectoryUsers --> "*" User : "users"
 DirectoryUserGroups o--> "1..*" UserGroup : userGroups
