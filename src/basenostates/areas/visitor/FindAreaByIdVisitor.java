@@ -39,7 +39,7 @@ public class FindAreaByIdVisitor implements Visitor {
     milestone2.debug("Starting visitor findAreaById, id: " + id);
     FindAreaByIdVisitor visitor = new FindAreaByIdVisitor(id);
     Area root = DirectoryAreas.getRootArea();
-    if (id.equals(root.getId())) {
+    if (id.equals("ROOT")) {
       return root;
     }
     root.accept(visitor);
