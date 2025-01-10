@@ -6,6 +6,7 @@ import basenostates.areas.Partition;
 import basenostates.areas.Space;
 import basenostates.doors.Door;
 import java.util.ArrayList;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,6 +39,9 @@ public class FindAreaByIdVisitor implements Visitor {
     milestone2.debug("Starting visitor findAreaById, id: " + id);
     FindAreaByIdVisitor visitor = new FindAreaByIdVisitor(id);
     Area root = DirectoryAreas.getRootArea();
+    if (id.equals("ROOT")) {
+      return root;
+    }
     root.accept(visitor);
     milestone2.debug("findAreaById found " + visitor.area + " as " + visitor.areaId);
     return visitor.area;

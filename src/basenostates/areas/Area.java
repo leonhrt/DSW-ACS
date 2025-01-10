@@ -1,6 +1,7 @@
 package basenostates.areas;
 
 import basenostates.areas.visitor.Visitor;
+import org.json.JSONObject;
 
 
 /**
@@ -42,4 +43,6 @@ public abstract class Area {
   public String getId() {
     return id;
   }
+
+  public abstract JSONObject toJson(int depth);
 }
